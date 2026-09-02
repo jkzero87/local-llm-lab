@@ -1,0 +1,42 @@
+0.00.282.549 I llama_model_loader: - kv  28:                qwen35.nextn_predict_layers u32              = 1
+0.00.627.333 I load_tensors:        CUDA0 model buffer size =     0.00 MiB
+0.00.627.335 I load_tensors:    CUDA_Host model buffer size =     0.00 MiB
+0.00.631.247 I llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+0.00.631.500 I llama_kv_cache:      CUDA0 KV buffer size =     0.00 MiB
+0.00.632.847 I llama_memory_recurrent:      CUDA0 RS buffer size =   299.25 MiB
+0.00.652.162 I sched_reserve:      CUDA0 compute buffer size =   148.27 MiB
+0.00.652.165 I sched_reserve:  CUDA_Host compute buffer size =    22.27 MiB
+0.00.652.482 I common_memory_breakdown_print: | memory breakdown [MiB]  | total    free     self   model   context   compute    unaccounted |
+0.00.652.485 I common_memory_breakdown_print: |   - CUDA0 (RTX 5060 Ti) | 15849 = 15399 + (14324 = 13061 +    1115 +     148) +      -13874 |
+0.00.652.487 I common_memory_breakdown_print: |   - Host                |                    543 =   520 +       0 +      22                |
+0.00.745.949 I llama_model_loader: - kv  28:                qwen35.nextn_predict_layers u32              = 1
+0.01.075.160 I load_tensors:        CUDA0 model buffer size =     0.00 MiB
+0.01.075.162 I load_tensors:    CUDA_Host model buffer size =     0.00 MiB
+0.01.079.803 I llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+0.01.080.123 I llama_kv_cache:      CUDA0 KV buffer size =     0.00 MiB
+0.01.088.681 I sched_reserve:      CUDA0 compute buffer size =   148.27 MiB
+0.01.088.684 I sched_reserve:  CUDA_Host compute buffer size =    22.27 MiB
+0.01.088.888 I common_memory_breakdown_print: | memory breakdown [MiB]  | total    free     self   model   context   compute    unaccounted |
+0.01.088.890 I common_memory_breakdown_print: |   - CUDA0 (RTX 5060 Ti) | 15849 = 15699 + (13260 = 13061 +      51 +     148) +      -13110 |
+0.01.088.892 I common_memory_breakdown_print: |   - Host                |                    543 =   520 +       0 +      22                |
+0.01.136.720 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort
+0.01.177.942 I llama_model_loader: - kv  28:                qwen35.nextn_predict_layers u32              = 1
+0.02.046.311 I load_tensors:   CPU_Mapped model buffer size =   521.00 MiB
+0.02.046.313 I load_tensors:        CUDA0 model buffer size = 13061.10 MiB
+0.04.203.384 I llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+0.04.204.023 I llama_kv_cache:      CUDA0 KV buffer size =   816.00 MiB
+0.04.207.600 I llama_memory_recurrent:      CUDA0 RS buffer size =   299.25 MiB
+0.04.234.694 I sched_reserve:      CUDA0 compute buffer size =   148.27 MiB
+0.04.234.698 I sched_reserve:  CUDA_Host compute buffer size =    22.27 MiB
+0.04.316.441 I llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+0.04.317.403 I llama_kv_cache:      CUDA0 KV buffer size =    51.00 MiB
+0.04.341.599 I sched_reserve:      CUDA0 compute buffer size =   148.27 MiB
+0.04.341.602 I sched_reserve:  CUDA_Host compute buffer size =    22.27 MiB
+0.05.837.905 I reserve_compute_meta:      CUDA0 compute buffer size =   248.10 MiB
+0.05.837.910 I reserve_compute_meta:        CPU compute buffer size =    24.93 MiB
+0.05.894.641 I spec common_specu: adding speculative implementation 'draft-mtp'
+0.05.894.657 I spec common_specu: - n_max=1, n_min=0, p_min=0.00, n_embd=5120, backend_sampling=1
+0.05.894.660 I spec common_specu: - gpu_layers=-1, cache_k=q8_0, cache_v=q8_0, ctx_tgt=yes, ctx_dft=yes, devices=[default]
+0.05.916.978 I sched_reserve:      CUDA0 compute buffer size =   148.27 MiB
+0.05.916.982 I sched_reserve:  CUDA_Host compute buffer size =    22.27 MiB
+0.05.932.467 I srv  llama_server: model loaded

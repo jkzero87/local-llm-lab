@@ -1,0 +1,62 @@
+ui-onboarding:
+  welcomeNoticeVersion: 2026-08-13.1
+llm-pi-ai:
+  providers:
+    flashnext-local:
+      displayName: flashnext-local
+      apiKeyEnv: LLAMACPP_LOCAL_API_KEY
+      api: openai-completions
+      baseURL: http://127.0.0.1:8093/v1
+      streamIdleTimeoutMs: 900000
+      compat:
+        supportsReasoningEffort: true
+      models:
+        - id: /home/jkzero/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf
+          name: Qwen3.8 Flash-Next
+          contextWindow: 98304
+          maxTokens: 16384
+          input: [ text, image ]
+          reasoningEfforts:
+            low: low
+            medium: medium
+            xhigh: xhigh
+    llamacpp-local:
+      displayName: llamacpp-local
+      apiKeyEnv: LLAMACPP_LOCAL_API_KEY
+      api: openai-completions
+      baseURL: http://127.0.0.1:8092/v1
+      streamIdleTimeoutMs: 900000
+      compat:
+        supportsReasoningEffort: true
+      models:
+        - id: /home/jkzero/models/Qwen3.8-27B/Qwen3.8-27B-UD-IQ4_XS.gguf
+          name: Qwen 3.8 27B
+          contextWindow: 32768
+          maxTokens: 16384
+          input:
+            - text
+          reasoningEfforts:
+            low: low
+            medium: medium
+            xhigh: xhigh
+agent-presets:
+  default: standard-light
+agent-default-model:
+  provider: llamacpp-local
+  model: /home/jkzero/models/Qwen3.8-27B/Qwen3.8-27B-UD-IQ4_XS.gguf
+
+web:
+  searchProvider: ddg
+
+free-search:
+  provider: ddg
+  region: us-en
+  bingMarket: en-US
+  lang: en
+
+tool-result-pruner:
+  thresholdChars: 8192
+  headChars: 4096
+  tailChars: 1024
+ui-theme:
+  preference: system

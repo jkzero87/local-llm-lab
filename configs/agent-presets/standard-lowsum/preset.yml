@@ -1,0 +1,3 @@
+name: Standard + compactación temprana
+description: Standard completo, compacta a 0.65 con resumen de 4096 (experimento de 32768).
+order: 3

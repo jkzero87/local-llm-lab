@@ -1,0 +1,5 @@
+2.58.096.395 I slot print_timing: id  0 | task 1607 | n_gen =    747, tg =  49.05 t/s, tg_3s =  50.65 t/s
+/home/jkzero/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:108: CUDA error
+2.59.050.620 E CUDA error: the launch timed out and was terminated
+2.59.050.625 E   current device: 0, in function ggml_backend_cuda_synchronize at ggml-cuda.cu:2542
+2.59.050.627 E   cudaStreamSynchronize(cuda_ctx->stream())
