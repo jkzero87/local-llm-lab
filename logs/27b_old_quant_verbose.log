@@ -1,0 +1,23 @@
+0.02.429.595 I load_tensors:        CUDA0 model buffer size =     0.00 MiB
+0.02.429.597 I load_tensors:    CUDA_Host model buffer size =     0.00 MiB
+0.02.434.506 I llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+0.02.434.829 I llama_kv_cache:      CUDA0 KV buffer size =     0.00 MiB
+0.02.435.585 I llama_memory_recurrent:      CUDA0 RS buffer size =   149.62 MiB
+0.02.453.358 I sched_reserve:      CUDA0 compute buffer size =   184.27 MiB
+0.02.453.361 I sched_reserve:  CUDA_Host compute buffer size =    26.27 MiB
+0.02.453.580 I common_memory_breakdown_print: | memory breakdown [MiB]  | total    free     self   model   context   compute    unaccounted |
+0.02.453.583 I common_memory_breakdown_print: |   - CUDA0 (RTX 5060 Ti) | 15849 = 15549 + (15454 = 14032 +    1237 +     184) +      -15153 |
+0.02.453.585 I common_memory_breakdown_print: |   - Host                |                    708 =   682 +       0 +      26                |
+0.03.453.523 I load_tensors:   CPU_Mapped model buffer size =   682.03 MiB
+0.03.453.526 I load_tensors:        CUDA0 model buffer size = 14032.23 MiB
+0.05.769.142 I llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+0.05.769.607 I llama_kv_cache:      CUDA0 KV buffer size =  1088.00 MiB
+0.05.772.917 I llama_memory_recurrent:      CUDA0 RS buffer size =   149.62 MiB
+0.05.809.468 I sched_reserve:      CUDA0 compute buffer size =   184.27 MiB
+0.05.809.472 I sched_reserve:  CUDA_Host compute buffer size =    26.27 MiB
+0.05.964.992 I srv  llama_server: model loaded
+9.42.463.527 I common_memory_breakdown_print: | memory breakdown [MiB]  | total   free     self   model   context   compute    unaccounted |
+9.42.463.530 I common_memory_breakdown_print: |   - CUDA0 (RTX 5060 Ti) | 15849 =  219 + (15454 = 14032 +    1237 +     184) +         176 |
+9.42.463.531 I common_memory_breakdown_print: |   - Host                |                   708 =   682 +       0 +      26                |
+9.42.463.654 D ~llama_context:      CUDA0 compute buffer size is 184.2737 MiB, matches expectation of 184.2737 MiB
+9.42.463.657 D ~llama_context:  CUDA_Host compute buffer size is  26.2745 MiB, matches expectation of  26.2745 MiB
