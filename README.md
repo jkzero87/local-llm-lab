@@ -83,7 +83,12 @@ The server has crashed twice under long agentic workloads with
 `CUDA error: the launch timed out and was terminated` — the GPU watchdog killing a
 kernel, not an out-of-memory condition.
 
-Suspect: CUDA graphs batching many kernels into one launch. With
+Suspect: CUDA graphs batching many kernels into one launch. But the machine
+reports `Display Active: Disabled`, so the classic X11 display watchdog is not
+armed — which undercuts the simplest explanation. Third-party reports on the same
+GPU architecture (sm_120) describe non-deterministic llama.cpp hangs under
+sustained inference where disabling CUDA graphs did not help, pointing at GSP
+firmware instead. Cause remains unidentified. With
 `GGML_CUDA_DISABLE_GRAPHS=1` the server survived a workload that had killed it
 twice.
 
