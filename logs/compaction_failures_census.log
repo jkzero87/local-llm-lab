@@ -1,0 +1,140 @@
+census  185 sessions  375 compaction starts  274 successful ends  100 failed ends
+
+-- failed ends by class --
+  truncated_at_cap       53
+  other                  19
+  aborted                10
+  no_text_summary         9
+  context_size            6
+  terminated              2
+  timeout                 1
+
+-- failed ends by session creation date (all classes) --
+  2026-08-19     2  context_size=2
+  2026-08-21     3  context_size=3
+  2026-08-22     8  aborted=3  no_text_summary=1  other=1  truncated_at_cap=3
+  2026-08-23    23  aborted=1  context_size=1  no_text_summary=1  other=7  truncated_at_cap=13
+  2026-08-29     7  aborted=1  other=5  truncated_at_cap=1
+  2026-08-30     2  aborted=1  timeout=1
+  2026-09-02    13  no_text_summary=1  terminated=2  truncated_at_cap=10
+  2026-09-03     3  aborted=1  truncated_at_cap=2
+  2026-09-04    33  no_text_summary=5  other=5  truncated_at_cap=23
+  2026-09-18     6  aborted=3  no_text_summary=1  other=1  truncated_at_cap=1
+
+-- sessions with >=10 compaction starts --
+  session-9902f5e4-2   2026-08-23  starts= 40 ok= 24 summary= 24 errors= 16  no_text_summary=1 other=6 truncated_at_cap=9
+  session-e2b21469-d   2026-08-22  starts= 39 ok= 34 summary= 34 errors=  5  aborted=2 other=1 truncated_at_cap=2
+  session-4f208ec8-e   2026-08-23  starts= 34 ok= 32 summary= 32 errors=  2  aborted=1 truncated_at_cap=1
+  session-4bcc372d-1   2026-09-18  starts= 28 ok= 24 summary= 24 errors=  4  aborted=1 no_text_summary=1 other=1 truncated_at_cap=1
+  session-37054a65-1   2026-09-04  starts= 27 ok= 21 summary= 21 errors=  6  other=4 truncated_at_cap=2
+  session-4b4ea9a9-b   2026-09-04  starts= 26 ok= 17 summary= 17 errors=  9  no_text_summary=5 truncated_at_cap=4
+  session-f90c794a-f   2026-09-18  starts= 20 ok= 18 summary= 18 errors=  2  aborted=2
+  session-40c4a9b8-b   2026-08-22  starts= 18 ok= 15 summary= 15 errors=  3  aborted=1 no_text_summary=1 truncated_at_cap=1
+  session-fae09fbf-c   2026-08-29  starts= 17 ok= 10 summary= 10 errors=  7  aborted=1 other=5 truncated_at_cap=1
+  session-fc9c6b67-a   2026-09-04  starts= 15 ok=  9 summary=  9 errors=  6  truncated_at_cap=6
+  session-ec778e9c-5   2026-09-02  starts= 11 ok=  2 summary=  2 errors=  9  terminated=2 truncated_at_cap=7
+  session-e2053b00-c   2026-09-04  starts= 10 ok= 10 summary= 10 errors=  0  
+
+-- raw failed compaction/end lines --
+session-d653a391-c  2026-08-19 20:23:35  context_size          400: {"code":400,"message":"request (9344 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9344,"n_ctx":8192}
+session-82109703-e  2026-08-19 22:09:58  context_size          400: {"code":400,"message":"request (9195 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9195,"n_ctx":8192}
+session-e3f62069-3  2026-08-21 21:24:00  context_size          400: {"code":400,"message":"request (9160 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9160,"n_ctx":8192}
+session-2b2aa06a-d  2026-08-21 21:25:05  context_size          400: {"code":400,"message":"request (9157 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9157,"n_ctx":8192}
+session-da4ab641-8  2026-08-21 21:59:33  context_size          400: {"code":400,"message":"request (9166 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9166,"n_ctx":8192}
+session-40c4a9b8-b  2026-08-22 19:54:07  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-40c4a9b8-b  2026-08-22 20:09:27  no_text_summary       summarization produced no text summary content
+session-40c4a9b8-b  2026-08-22 20:28:29  aborted               Request was aborted
+session-e2b21469-d  2026-08-23 01:13:54  other                 summary is not smaller than the shadowed content (3540 estimated framed tokens >= 3540)
+session-e2b21469-d  2026-08-23 02:38:08  aborted               Request was aborted
+session-e2b21469-d  2026-08-23 02:46:02  aborted               Request was aborted
+session-e2b21469-d  2026-08-23 14:55:56  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-e2b21469-d  2026-08-23 15:07:01  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-4f208ec8-e  2026-08-23 17:54:55  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-4f208ec8-e  2026-08-23 19:24:31  aborted               Request was aborted
+session-5539bf89-e  2026-08-23 21:16:55  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-5539bf89-e  2026-08-23 21:20:59  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-5539bf89-e  2026-08-23 21:22:53  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-5539bf89-e  2026-08-23 21:22:54  context_size          400: {"code":400,"message":"request (32822 tokens) exceeds the available context size (32768 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":32822,"n_ctx":32768}
+session-d1a41143-5  2026-08-23 22:37:26  other                 summary is not smaller than the shadowed content (1011 estimated framed tokens >= 1010)
+session-9902f5e4-2  2026-08-23 23:05:23  other                 summary is not smaller than the shadowed content (1701 estimated framed tokens >= 1701)
+session-9902f5e4-2  2026-08-23 23:25:11  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-9902f5e4-2  2026-08-23 23:28:36  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-9902f5e4-2  2026-08-23 23:34:19  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-9902f5e4-2  2026-08-23 23:39:14  other                 summary is not smaller than the shadowed content (2814 estimated framed tokens >= 2800)
+session-9902f5e4-2  2026-08-23 23:49:59  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-9902f5e4-2  2026-08-23 23:53:05  other                 summary is not smaller than the shadowed content (2113 estimated framed tokens >= 2113)
+session-9902f5e4-2  2026-08-24 00:19:49  other                 summary is not smaller than the shadowed content (2096 estimated framed tokens >= 2096)
+session-9902f5e4-2  2026-08-24 00:21:14  other                 summary is not smaller than the shadowed content (2092 estimated framed tokens >= 2092)
+session-9902f5e4-2  2026-08-24 00:22:05  no_text_summary       summarization produced no text summary content
+session-9902f5e4-2  2026-08-24 00:31:28  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-9902f5e4-2  2026-08-24 00:37:18  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-9902f5e4-2  2026-08-24 00:41:41  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-9902f5e4-2  2026-08-24 00:42:57  other                 summary is not smaller than the shadowed content (3113 estimated framed tokens >= 3111)
+session-9902f5e4-2  2026-08-24 00:49:07  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-9902f5e4-2  2026-08-24 00:51:34  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-fae09fbf-c  2026-08-29 23:34:14  other                 summary is not smaller than the shadowed content (1055 estimated framed tokens >= 386)
+session-fae09fbf-c  2026-08-29 23:39:02  other                 summary is not smaller than the shadowed content (1313 estimated framed tokens >= 1305)
+session-fae09fbf-c  2026-08-29 23:48:52  other                 summary is not smaller than the shadowed content (1310 estimated framed tokens >= 1238)
+session-fae09fbf-c  2026-08-29 23:56:30  aborted               Request aborted
+session-fae09fbf-c  2026-08-30 01:11:16  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-fae09fbf-c  2026-08-30 01:26:36  other                 summary is not smaller than the shadowed content (1763 estimated framed tokens >= 1763)
+session-fae09fbf-c  2026-08-30 01:32:34  other                 summary is not smaller than the shadowed content (1773 estimated framed tokens >= 1763)
+session-9c93a1ca-e  2026-08-30 01:55:10  aborted               Request was aborted
+session-e52d9ac2-f  2026-08-30 20:55:07  timeout               pi-ai stream idle timeout after 300000ms
+session-0e54e7bf-4  2026-09-02 22:51:27  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ec778e9c-5  2026-09-02 23:13:58  terminated            terminated
+session-ec778e9c-5  2026-09-02 23:17:00  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ec778e9c-5  2026-09-02 23:18:21  terminated            terminated
+session-ec778e9c-5  2026-09-02 23:25:13  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ec778e9c-5  2026-09-02 23:30:13  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ec778e9c-5  2026-09-02 23:32:17  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ec778e9c-5  2026-09-02 23:34:26  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ec778e9c-5  2026-09-02 23:36:24  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ec778e9c-5  2026-09-02 23:37:05  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ecd8268a-e  2026-09-02 23:46:13  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ecd8268a-e  2026-09-02 23:49:55  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-ecd8268a-e  2026-09-02 23:50:48  no_text_summary       summarization produced no text summary content
+session-769427df-7  2026-09-03 23:53:52  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-769427df-7  2026-09-03 23:57:25  aborted               Request was aborted
+session-769427df-7  2026-09-03 23:59:29  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-527ff322-9  2026-09-04 00:08:49  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-527ff322-9  2026-09-04 00:12:50  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-527ff322-9  2026-09-04 00:16:05  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-527ff322-9  2026-09-04 00:17:31  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-b9716a57-e  2026-09-04 00:24:34  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-b9716a57-e  2026-09-04 00:40:14  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-66207706-1  2026-09-04 01:13:21  other                 summary is not smaller than the shadowed content (2463 estimated framed tokens >= 2463)
+session-66207706-1  2026-09-04 01:19:03  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-66207706-1  2026-09-04 01:21:24  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-66207706-1  2026-09-04 01:22:25  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-4751fe80-6  2026-09-04 20:20:17  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-4751fe80-6  2026-09-04 20:30:10  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-37054a65-1  2026-09-04 20:53:14  other                 summary is not smaller than the shadowed content (2026 estimated framed tokens >= 2026)
+session-37054a65-1  2026-09-04 21:01:19  other                 summary is not smaller than the shadowed content (2458 estimated framed tokens >= 2452)
+session-37054a65-1  2026-09-04 21:11:55  other                 summary is not smaller than the shadowed content (2481 estimated framed tokens >= 2478)
+session-37054a65-1  2026-09-04 21:16:39  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-37054a65-1  2026-09-04 21:28:19  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-37054a65-1  2026-09-04 21:44:08  other                 summary is not smaller than the shadowed content (2376 estimated framed tokens >= 2376)
+session-fc9c6b67-a  2026-09-04 22:36:50  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-fc9c6b67-a  2026-09-04 22:40:49  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-fc9c6b67-a  2026-09-04 22:47:28  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-fc9c6b67-a  2026-09-04 22:50:52  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-fc9c6b67-a  2026-09-04 22:54:01  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-fc9c6b67-a  2026-09-04 22:57:38  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-4b4ea9a9-b  2026-09-05 15:20:16  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-4b4ea9a9-b  2026-09-05 15:20:36  no_text_summary       summarization produced no text summary content
+session-4b4ea9a9-b  2026-09-05 15:21:28  no_text_summary       summarization produced no text summary content
+session-4b4ea9a9-b  2026-09-05 15:21:51  no_text_summary       summarization produced no text summary content
+session-4b4ea9a9-b  2026-09-05 15:23:19  no_text_summary       summarization produced no text summary content
+session-4b4ea9a9-b  2026-09-05 15:23:56  no_text_summary       summarization produced no text summary content
+session-4b4ea9a9-b  2026-09-05 15:32:17  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-4b4ea9a9-b  2026-09-05 15:35:33  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-4b4ea9a9-b  2026-09-05 15:39:44  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+session-f90c794a-f  2026-09-18 20:32:50  aborted               Request was aborted
+session-f90c794a-f  2026-09-18 22:24:43  aborted               Request was aborted
+session-4bcc372d-1  2026-09-18 23:18:00  no_text_summary       summarization produced no text summary content
+session-4bcc372d-1  2026-09-18 23:24:44  other                 summary is not smaller than the shadowed content (2809 estimated framed tokens >= 2808)
+session-4bcc372d-1  2026-09-18 23:27:46  aborted               Request was aborted
+session-4bcc372d-1  2026-09-18 23:41:59  truncated_at_cap      summarization truncated at the token cap (incomplete checkpoint)
+
+source: 185 session dirs under ~/.dsh/sessions/

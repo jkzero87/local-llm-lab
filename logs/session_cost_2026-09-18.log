@@ -1,0 +1,33 @@
+session                                        created (UTC)         mins turns  tools     input   output    cached comp  comp%
+session-b8c0ad1c-f3b3-4e4f-be3c-f9f96ea25c38   2026-09-18 18:42       5.6     2      1     15358      881      6542    0    0.0
+session-8011dfd1-66f7-4126-86e4-02e35234af07   2026-09-18 18:48       0.6     1      1      1395      925     12527    0    0.0
+session-cd773301-8a30-4620-bc23-d11d6aadd171   2026-09-18 18:49       0.9     1      2       826     1732     21768    0    0.0
+session-7e128ce3-2160-4bfc-a4d4-95900b3ea7cd   2026-09-18 18:50       0.9     1      1      1952     1873     12312    0    0.0
+session-6a551197-bb7d-4696-9e57-b779dd6e3f1c   2026-09-18 18:51       3.0     0      0         0        0         0    0    0.0
+session-4ba0c0e7-bf7c-4744-94bd-add5b5a20878   2026-09-18 18:55      33.7     4     30     46429    27412    489823    3    8.4
+session-53193da5-2b9f-452a-a557-b4b0ed3a3dfe   2026-09-18 20:15       0.0     0      0         0        0         0    0    0.0
+session-f90c794a-f384-4cac-b5d0-a9b9146f1d11   2026-09-18 20:16     140.4    13    104    334072   153118   1709564   20   18.8
+session-4bcc372d-1ca9-4b23-8f31-c9963b32b3c4   2026-09-18 22:17      90.7     3     68    543496   151831    896237   27   48.0
+
+totals  9 sessions  275.8 wall-clock minutes  25 turns  207 tool calls
+        input 943,528  output 337,772  cacheRead 3,148,773
+        compaction 72.7 min  (26.4% of window wall clock)
+
+API-equivalent cost of the same totals, USD per million tokens (input / cacheRead / output), checked 2026-09-17; COP at 3151.73 USD/COP:
+tier                               in $    cache $      out $          USD              COP
+GPT-6 Astra                        9.44       3.15      16.89        29.47           92,890
+Claude Opus 5                      4.72       1.57       8.44        14.74           46,445
+GPT-5.6 Terra                      1.89       0.63       4.05         6.57           20,707
+Claude Sonnet 5                    1.89       0.63       3.38         5.89           18,578
+Claude Haiku 4.5                   0.94       0.31       1.69         2.95            9,289
+GPT-5.6 Luna                       0.19       0.06       0.41         0.66            2,071
+DeepSeek V4.1 Flash peak           0.28       0.02       0.41         0.71            2,229
+DeepSeek V4.1 Flash off-peak       0.14       0.01       0.20         0.35            1,115
+  # GPT-6 Astra: https://openai.com/api/pricing/ (checked 2026-09-17)
+  # Claude Opus 5: https://www.anthropic.com/pricing (checked 2026-09-17)
+  # GPT-5.6 Terra: https://openai.com/api/pricing/ (checked 2026-09-17)
+  # Claude Sonnet 5: https://www.anthropic.com/pricing (checked 2026-09-17)
+  # Claude Haiku 4.5: https://www.anthropic.com/pricing (checked 2026-09-17)
+  # GPT-5.6 Luna: https://openai.com/api/pricing/ (checked 2026-09-17)
+  # DeepSeek V4.1 Flash peak: https://api-docs.deepseek.com/quick_start/pricing (checked 2026-09-17)
+  # DeepSeek V4.1 Flash off-peak: https://api-docs.deepseek.com/quick_start/pricing (checked 2026-09-17)
