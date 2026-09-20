@@ -1,0 +1,4 @@
+# dsh-recall — recall original session-event content removed by compaction
+- insert:
+    - id: recall
+      name: dsh-recall
