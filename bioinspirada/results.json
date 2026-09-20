@@ -1,0 +1,56 @@
+{
+  "seed": 12345,
+  "n": 200,
+  "generatedAt": "2026-09-20T22:06:59.765Z",
+  "conditions": {
+    "intact": {
+      "successRate": 1,
+      "meanSteps": 309.135,
+      "meanFinalDistance": 19.44987250569424,
+      "meanMeanDistance": 191.140813175124,
+      "n": 200
+    },
+    "no_pirouette": {
+      "successRate": 0.995,
+      "meanSteps": 328.4673366834171,
+      "meanFinalDistance": 21.439403065724072,
+      "meanMeanDistance": 197.18856795511846,
+      "n": 200
+    },
+    "no_weathervane": {
+      "successRate": 0.875,
+      "meanSteps": 1094.2857142857142,
+      "meanFinalDistance": 28.34920109964939,
+      "meanMeanDistance": 166.03250970157308,
+      "n": 200
+    },
+    "ablate_ASEL": {
+      "successRate": 0,
+      "meanSteps": null,
+      "meanFinalDistance": 405.5937393608958,
+      "meanMeanDistance": 381.83306247029344,
+      "n": 200
+    },
+    "noise_0.1": {
+      "successRate": 0.715,
+      "meanSteps": 1112.902097902098,
+      "meanFinalDistance": 108.20296703903763,
+      "meanMeanDistance": 262.9097479709989,
+      "n": 200
+    },
+    "moving_source": {
+      "successRate": 1,
+      "meanSteps": 309.385,
+      "meanFinalDistance": 19.436968341414907,
+      "meanMeanDistance": 191.24579276128574,
+      "n": 200
+    },
+    "random_walk": {
+      "successRate": 0.05,
+      "meanSteps": 1341.5,
+      "meanFinalDistance": 288.5801501113564,
+      "meanMeanDistance": 325.7780231107904,
+      "n": 200
+    }
+  }
+}
