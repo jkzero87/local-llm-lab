@@ -1,0 +1,59 @@
+=== compaction failure / checkpoint report ===
+sessions scanned:            196
+compaction/start total:      412
+compaction/summary total:    303
+compaction/end w/ error:     108
+failure rate (errors/starts): 0.2621 (26.21%)
+
+--- distinct error strings (most common first) ---
+   57  summarization truncated at the token cap (incomplete checkpoint)
+   11  summarization produced no text summary content
+   10  Request was aborted
+    2  terminated
+    1  400: {"code":400,"message":"request (9157 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9157,"n_ctx":8192}
+    1  summary is not smaller than the shadowed content (2026 estimated framed tokens >= 2026)
+    1  summary is not smaller than the shadowed content (2458 estimated framed tokens >= 2452)
+    1  summary is not smaller than the shadowed content (2481 estimated framed tokens >= 2478)
+    1  summary is not smaller than the shadowed content (2376 estimated framed tokens >= 2376)
+    1  400: {"code":400,"message":"request (32822 tokens) exceeds the available context size (32768 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":32822,"n_ctx":32768}
+    1  summary is not smaller than the shadowed content (2463 estimated framed tokens >= 2463)
+    1  400: {"code":400,"message":"request (9195 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9195,"n_ctx":8192}
+    1  summary is not smaller than the shadowed content (1701 estimated framed tokens >= 1701)
+    1  summary is not smaller than the shadowed content (2814 estimated framed tokens >= 2800)
+    1  summary is not smaller than the shadowed content (2113 estimated framed tokens >= 2113)
+    1  summary is not smaller than the shadowed content (2096 estimated framed tokens >= 2096)
+    1  summary is not smaller than the shadowed content (2092 estimated framed tokens >= 2092)
+    1  summary is not smaller than the shadowed content (3113 estimated framed tokens >= 3111)
+    1  summary is not smaller than the shadowed content (1011 estimated framed tokens >= 1010)
+    1  400: {"code":400,"message":"request (9344 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9344,"n_ctx":8192}
+    1  400: {"code":400,"message":"request (9166 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9166,"n_ctx":8192}
+    1  summary is not smaller than the shadowed content (3540 estimated framed tokens >= 3540)
+    1  400: {"code":400,"message":"request (9160 tokens) exceeds the available context size (8192 tokens), try increasing it","type":"exceed_context_size_error","n_prompt_tokens":9160,"n_ctx":8192}
+    1  pi-ai stream idle timeout after 300000ms
+    1  summary is not smaller than the shadowed content (1055 estimated framed tokens >= 386)
+    1  summary is not smaller than the shadowed content (1313 estimated framed tokens >= 1305)
+    1  summary is not smaller than the shadowed content (1310 estimated framed tokens >= 1238)
+    1  Request aborted
+    1  summary is not smaller than the shadowed content (1763 estimated framed tokens >= 1763)
+    1  summary is not smaller than the shadowed content (1773 estimated framed tokens >= 1763)
+    1  summary is not smaller than the shadowed content (2809 estimated framed tokens >= 2808)
+    1  summary is not smaller than the shadowed content (2268 estimated framed tokens >= 2253)
+
+--- 5 sessions with most failures ---
+9902f5e4-2bff-4798-9f30-16131308c3b2  failures=16  starts=40  failure_rate=0.4000
+4bcc372d-1ca9-4b23-8f31-c9963b32b3c4  failures=9  starts=40  failure_rate=0.2250
+4b4ea9a9-beb3-4a24-841b-5948b63b92ff  failures=9  starts=26  failure_rate=0.3462
+ec778e9c-58bb-474a-b565-4618acf6a83f  failures=9  starts=11  failure_rate=0.8182
+fae09fbf-c8d7-4760-af42-e0b17638e151  failures=7  starts=17  failure_rate=0.4118
+
+sessions with n_end_err>0 and n_summary==0: 9
+
+--- successful checkpoint output tokens ---
+count:   303
+min:     673
+median:  3529
+p90:     6230.200000000001
+max:     8143
+within 200 of 8192:      3
+
+csv written: /home/jkzero/local-llm-lab/data/compaction_failures.csv

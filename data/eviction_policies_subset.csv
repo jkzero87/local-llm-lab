@@ -1,0 +1,6 @@
+policy,over_budget_steps,evicted_events,evicted_tokens,exposure_pct,n_sessions
+P0_NO_EVICT,1046,0,0,0.0,24
+P2_LARGEST,0,1668,1475608,86.8,24
+P4_LRU,0,2671,1472087,87.5,24
+P5_WS3,178,2665,1473666,88.2,24
+P6_WS3_LRU,179,2676,1473122,88.1,24

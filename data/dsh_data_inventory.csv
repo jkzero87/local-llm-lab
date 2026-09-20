@@ -1,0 +1,12 @@
+location,kind,n_files,total_bytes,oldest_mtime,newest_mtime
+/home/jkzero/.dsh.backup_rc7,alternate-home,118,5889810,2026-08-21T18:23:00,2026-08-21T18:23:00
+/home/jkzero/dsh-config-backup,alternate-home,7,29249,2026-09-02T18:27:32,2026-09-02T18:37:51
+/home/jkzero/.npm/_npx,alternate-home,32758,248951310,2026-08-18T19:46:47,2026-08-18T19:46:53
+/home/jkzero/.dsh.backup_pre_v015_20260912,alternate-home,302,63737355,2026-08-18T19:46:53,2026-09-06T15:27:01
+/home/jkzero/.dsh.pre_v016_20260917_164138,alternate-home,304,64349812,2026-08-18T19:46:53,2026-09-12T17:33:49
+/home/jkzero/.dsh/sessions/--home-jkzero-dsh-scratch--,workspace,199,53811203,2026-08-19T14:43:52,2026-09-18T13:55:00
+/home/jkzero/.dsh/sessions/--home-jkzero-jira-rag--,workspace,6,1695970,2026-09-18T15:16:46,2026-09-19T09:14:47
+/home/jkzero/.dsh/sessions/--home-jkzero-lane-detection--,workspace,4,174019,2026-09-18T13:55:26,2026-09-18T15:15:35
+/home/jkzero/.dsh/sessions/--home-jkzero-local-llm-lab--,workspace,4,382811,2026-09-19T09:11:08,2026-09-19T09:35:31
+/home/jkzero/logs,logs,119,33721073,2026-08-20T17:31:22,2026-09-19T09:35:31
+/home/jkzero/.dsh/storages,storages,190,1158871,2026-09-12T17:33:49,2026-09-19T09:34:27
