@@ -1,45 +1,71 @@
 import { defineTool } from "@deepseek-ai/dsh-tools";
 import { SessionSeq } from "@deepseek-ai/dsh-session";
 
+const name = "recall";
+const inject = ["tools"];
+
 const DEFAULT_MAX_CHARS = 8000;
 const MAX_SPAN = 200;
 
 /** Flatten a derived event message into plain text for recall output. */
 function messageToText(message) {
-  if (typeof message === "string") return message;
-  if (Array.isArray(message?.content)) {
-    return message.content
-      .map((block) => (typeof block === "string" ? block : block?.text ?? ""))
-      .join("");
+  const walk = (value) => {
+    if (typeof value === "string") return value;
+    if (Array.isArray(value)) {
+      return value.map(walk).join("");
+    }
+    if (value !== null && typeof value === "object") {
+      if (typeof value.text === "string") return value.text;
+      if (Array.isArray(value.content)) return walk(value.content);
+      if (Array.isArray(value.parts)) return walk(value.parts);
+    }
+    return "";
+  };
+  const text = walk(message);
+  if (text === "" && message !== null && typeof message === "object") {
+    return JSON.stringify(message);
   }
-  return JSON.stringify(message) ?? "";
+  return text;
 }
 
-export default function plugin(ctx) {
-  ctx.inject(["tools"], (sctx) => {
-    sctx.effect(() => {
-      const dispose = sctx.tools.register(
+function apply(ctx, config) {
+  ctx.effect(() => {
+    const dispose = ctx.tools.register(
         defineTool({
           name: "recall",
           description:
-            "Returns the ORIGINAL content of session events that compaction has removed from the visible conversation, given a seq range. Seq numbers appear in compaction checkpoint messages.",
+            "Returns the ORIGINAL content of session events that compaction has removed from the visible conversation, given a seq range. Call recall_index first to get the available seq ranges.",
           parameters: {
             startSeq: {
               type: "number",
-              required: true,
               description:
                 "First event seq to recall (inclusive). Seq numbers appear in compaction checkpoint messages.",
             },
             endSeq: {
               type: "number",
-              required: true,
               description:
                 "Last event seq to recall (inclusive). The span from startSeq is limited to 200 seqs.",
             },
             maxChars: {
               type: "number",
               description: "Maximum total characters to return (default 8000).",
-              default: DEFAULT_MAX_CHARS,
+            },
+          },
+          output: {
+            schema: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                recalled: { type: "number" },
+                missing: { type: "number" },
+                empty: { type: "number" },
+                truncated: { type: "boolean" },
+                content: { type: "string" },
+              },
+            },
+            render(args, value) {
+              const header = `recall: ${value.recalled} recalled, ${value.missing} missing, ${value.empty} empty, truncated=${value.truncated} (seq ${args.startSeq}..${args.endSeq})`;
+              return [{ type: "text", text: `${header}\n${value.content}` }];
             },
           },
           async execute(args, exec) {
@@ -107,9 +133,88 @@ export default function plugin(ctx) {
           },
         }),
       );
+      const disposeIndex = ctx.tools.register(
+        defineTool({
+          name: "recall_index",
+          description:
+            "Lists the spans of this session's conversation that compaction has removed from view, so `recall` can bring them back. Call this before `recall` to find out what is available.",
+          parameters: {},
+          output: {
+            schema: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                spans: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    additionalProperties: false,
+                    properties: {
+                      kind: { type: "string" },
+                      startSeq: { type: "number" },
+                      endSeq: { type: "number" },
+                      count: { type: "number" },
+                      tokens: { type: "number" },
+                    },
+                  },
+                },
+                totalSpans: { type: "number" },
+                totalTokens: { type: "number" },
+              },
+            },
+            render(args, value) {
+              const lines = [
+                `recall_index: ${value.totalSpans} spans, ${value.totalTokens} tokens`,
+              ];
+              for (const span of value.spans) {
+                lines.push(
+                  `${span.kind} seq ${span.startSeq}..${span.endSeq} (${span.count} events, ${span.tokens} tokens)`,
+                );
+              }
+              return [{ type: "text", text: lines.join("\n") }];
+            },
+          },
+          async execute(args, exec) {
+            if (!exec.agent) throw new Error("recall_index requires a calling agent");
+            const session = exec.agent.session;
+            const events = session.snapshotEvents();
+            if (!Array.isArray(events)) {
+              throw new Error(
+                `recall_index: session.snapshotEvents() did not return an array (got ${typeof events})`,
+              );
+            }
+            const spans = [];
+            let totalTokens = 0;
+            for (const event of events) {
+              const kind =
+                event?.type === "compaction/summary"
+                  ? "summary"
+                  : event?.type === "compaction/prune"
+                    ? "prune"
+                    : null;
+              if (kind === null) continue;
+              const shadowedSeqs = event.data?.shadowedSeqs;
+              if (!Array.isArray(shadowedSeqs) || shadowedSeqs.length === 0) continue;
+              const tokens = event.data?.shadowedTokenCount ?? 0;
+              const span = {
+                kind,
+                startSeq: Math.min(...shadowedSeqs),
+                endSeq: Math.max(...shadowedSeqs),
+                count: shadowedSeqs.length,
+                tokens,
+              };
+              spans.push(span);
+              totalTokens += tokens;
+            }
+            return { spans, totalSpans: spans.length, totalTokens };
+          },
+        }),
+      );
       return () => {
         dispose();
+        disposeIndex();
       };
-    }, "dsh-recall: recall tool");
-  });
+    }, "dsh-recall: recall and recall_index tools");
 }
+
+export { name, inject, apply };
