@@ -2,10 +2,13 @@ import { defineTool } from "@deepseek-ai/dsh-tools";
 import { SessionSeq } from "@deepseek-ai/dsh-session";
 
 const name = "recall";
-const inject = ["tools"];
+const inject = ["tools", "tokenMeter"];
 
 const DEFAULT_MAX_CHARS = 8000;
 const MAX_SPAN = 200;
+const CAP_THRESHOLD_CHARS = 8192;
+const CAP_HEAD_CHARS = 4096;
+const CAP_TAIL_CHARS = 1024;
 
 /** Flatten a derived event message into plain text for recall output. */
 function messageToText(message) {
@@ -26,6 +29,74 @@ function messageToText(message) {
     return JSON.stringify(message);
   }
   return text;
+}
+
+/** Count Unicode code points in text; non-text blocks cost zero. */
+function measureBlocks(blocks) {
+  let chars = 0;
+  for (const block of blocks) if (block.type === "text") chars += Array.from(block.text).length;
+  return chars;
+}
+
+/**
+ * Cap oversized tool results on the surface, shadowing the originals so
+ * recall can restore them. Mirrors the stock tool-result pruner.
+ * @param ctx - plugin context providing the injected token meter.
+ * @param session - session whose current surface is rewritten.
+ */
+function capSession(ctx, session) {
+  const candidates = [];
+  for (const seq of [...session.surface.nodes]) {
+    const event = session.eventAt(seq);
+    if (event?.type === "tool/result") candidates.push({ seq, event });
+  }
+  for (const { seq, event } of candidates) {
+    const result = event.data.message.content[0];
+    const blocks = result.content;
+    const totalChars = measureBlocks(blocks);
+    if (totalChars <= CAP_THRESHOLD_CHARS) continue;
+    const removed = totalChars - CAP_HEAD_CHARS - CAP_TAIL_CHARS;
+    const removedStart = CAP_HEAD_CHARS;
+    const removedEnd = totalChars - CAP_TAIL_CHARS;
+    const replaced = [];
+    let consumed = 0;
+    let markerInserted = false;
+    for (const block of blocks) {
+      if (block.type !== "text") {
+        replaced.push(block);
+        continue;
+      }
+      const points = Array.from(block.text);
+      const blockStart = consumed;
+      const blockEnd = blockStart + points.length;
+      const headEnd = Math.min(points.length, Math.max(0, removedStart - blockStart));
+      const tailStart = Math.min(points.length, Math.max(0, removedEnd - blockStart));
+      const marker =
+        blockStart < removedEnd && blockEnd > removedStart && !markerInserted
+          ? `\n\n[... ${removed} characters removed. call recall with startSeq=${seq} endSeq=${seq} for the full original ...]\n\n`
+          : "";
+      if (marker.length > 0) markerInserted = true;
+      const text = points.slice(0, headEnd).join("") + marker + points.slice(tailStart).join("");
+      if (text.length > 0) replaced.push({ ...block, text });
+      consumed = blockEnd;
+    }
+    if (!markerInserted) continue;
+    const charsAfter = measureBlocks(replaced);
+    if (charsAfter >= totalChars) continue;
+    const message = {
+      ...event.data.message,
+      content: [{ ...result, content: replaced }],
+    };
+    session.append("compaction/prune", {
+      shadowedRange: { start: seq, end: seq },
+      shadowedSeqs: [seq],
+      shadowedTokenCount: ctx.tokenMeter.estimateMessage(event.data.message),
+    });
+    session.append("tool/result", { ...event.data, message }, {
+      surfaceOp: { op: "replace", startSeq: seq, endSeq: seq },
+      sourceEventSeqs: [seq],
+    });
+  }
 }
 
 function apply(ctx, config) {
@@ -215,6 +286,13 @@ function apply(ctx, config) {
         disposeIndex();
       };
     }, "dsh-recall: recall and recall_index tools");
+  ctx.on("agent/pre-step", async ({ agent, signal }, next) => {
+    if (!signal.aborted) {
+      try { capSession(ctx, agent.session); }
+      catch (error) { ctx.logger.warn(`recall cap failed: ${error.message}; continuing`); }
+    }
+    return next();
+  });
 }
 
 export { name, inject, apply };
