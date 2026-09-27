@@ -1,0 +1,14 @@
+{
+  "name": "dsh-preset-standard-light",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The standard-light agent preset (no workflow, subagents, ralph or goals; dsh-compaction-select) as a dsh bundle",
+  "files": [
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "cordis.patch.yml"
+    }
+  }
+}

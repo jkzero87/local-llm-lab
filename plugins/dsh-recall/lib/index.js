@@ -51,8 +51,13 @@ function capSession(ctx, session) {
     if (event?.type === "tool/result") candidates.push({ seq, event });
   }
   for (const { seq, event } of candidates) {
-    const result = event.data.message.content[0];
-    const blocks = result.content;
+    // V4 (dsh 0.1.7): role "tool" with the result blocks directly in content.
+    // V3 (dsh 0.1.5): role "user" wrapping them in one tool-result block.
+    const original = event.data.message;
+    const wrapped = original.role !== "tool";
+    const result = wrapped ? original.content[0] : undefined;
+    const blocks = wrapped ? result.content : original.content;
+    if (!Array.isArray(blocks)) continue;
     const totalChars = measureBlocks(blocks);
     if (totalChars <= CAP_THRESHOLD_CHARS) continue;
     const removed = totalChars - CAP_HEAD_CHARS - CAP_TAIL_CHARS;
@@ -83,14 +88,13 @@ function capSession(ctx, session) {
     if (!markerInserted) continue;
     const charsAfter = measureBlocks(replaced);
     if (charsAfter >= totalChars) continue;
-    const message = {
-      ...event.data.message,
-      content: [{ ...result, content: replaced }],
-    };
+    const message = wrapped
+      ? { ...original, content: [{ ...result, content: replaced }] }
+      : { ...original, content: replaced };
     session.append("compaction/prune", {
       shadowedRange: { start: seq, end: seq },
       shadowedSeqs: [seq],
-      shadowedTokenCount: ctx.tokenMeter.estimateMessage(event.data.message),
+      shadowedTokenCount: ctx.tokenMeter.estimateMessage(original),
     });
     session.append("tool/result", { ...event.data, message }, {
       surfaceOp: { op: "replace", startSeq: seq, endSeq: seq },
