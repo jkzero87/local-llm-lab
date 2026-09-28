@@ -1,3 +1,7 @@
 *.pyc
 __pycache__/
 plugins/dsh-recall/node_modules/
+
+.npm-cache/
+.ipynb_checkpoints/
+**/node_modules.pre_*/
