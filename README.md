@@ -77,7 +77,7 @@ A second gap surfaced the same way — the harness never tells the model today's
 date, so it reasoned from its training cutoff and misread correct sources as
 confusing. Fixed by regenerating the date into the instructions file at launch.
 
-## 5. Open: `launch timed out`
+## 5. `launch timed out`: matched to a known issue, worked around
 
 The server has crashed twice under long agentic workloads with
 `CUDA error: the launch timed out and was terminated` — the GPU watchdog killing a
@@ -96,6 +96,29 @@ twice.
 earlier instance took 7000+ tokens to appear while today's came at 747. Persisted
 as a systemd drop-in so a restarted service inherits it, and left open pending
 more runs.
+
+**Update (2026-09-25).** Three more hangs under a soak test, one of them on the
+production quantization, all with the same kernel signature (RC watchdog, Xid 8).
+They match [llama.cpp #27330](https://github.com/ggml-org/llama.cpp/issues/27330):
+CUDA graphs hang the GPU channel on sm_120, reported on this same model with a
+q8_0 KV cache. The reported workaround is the one above,
+`GGML_CUDA_DISABLE_GRAPHS=1`, at a 10–15% decode cost. Production runs with graphs
+disabled; the upstream issue is still open. Full timeline, ruled-out causes and
+what was not tested: [`notes/2026-09-25-gsq-xid.md`](notes/2026-09-25-gsq-xid.md).
+
+---
+
+## What else is in here
+
+| Path | What it is |
+|---|---|
+| `configs/` | The agent harness (dsh) config: `AGENTS.md` rules, `settings.yaml`, agent presets |
+| `logs/` | Raw server and census logs behind the numbers above |
+| `notes/` | Session notes; one file per long working session |
+| `design/context-budget.md` | Design investigation: making context overflow impossible in the harness, with the measured case for reversible eviction |
+| `tools/`, `data/` | Measurement scripts (session token cost, compaction census, eviction simulations, recall probes) and their CSV output |
+| `plugins/` | `dsh-recall` (recover evicted context by sequence range) and the `standard-light` preset bundle |
+| `bioinspirada/` | Separate university project (Computación Bioinspirada, UNIMINUTO): a C. elegans chemotaxis agent in plain JavaScript, plus the week-5 genetic-algorithm experiment. Has its own README |
 
 ---
 
