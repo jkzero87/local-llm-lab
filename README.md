@@ -309,21 +309,56 @@ Prefill is about 4% lower than UD-IQ4_XS; generation is unchanged. The memory
 saved buys context: production runs at 65536 (`configs/launch/manifiestate`)
 with 656 MiB of VRAM to spare on this marker, and CUDA graphs disabled (entry 5).
 
-## 13. Open: does the 27B write faster than Flash-Next in practice?
+## 13. Closing the Strata chapter: one same-test comparison
 
-*Log: `logs/2026-10_real_session_generation_speed.log`.*
+*Log: `logs/2026-10-06_27b_vs_strata_closing.log`. Rule pre-registered and pushed
+before the first shot: `notes/2026-10-06-strata-vs-27b-rule.md`.*
 
-Per-token generation in real dsh sessions, counting only tasks of 200 tokens or more:
+Real dsh sessions suggested the 27B writes faster per token (per-log medians of
+43.88-58.55 t/s vs 35.2 t/s for Strata; `logs/2026-10_real_session_generation_speed.log`),
+but those were different tasks. So I ran one same-test comparison. The test was
+the frozen 17.5k marker (correct answer 6), five shots per arm. The server was
+restarted before every shot, and `cache_n` was 0 on every shot, so no shot
+reused a prompt. The 27B used the production `manifiestate` parameters (65536,
+MTP, CUDA graphs off, effort medium). Strata used the production
+`strata-iq3_s.json` (65536, effort medium), with swap off.
 
-- 27B GSQ on llama.cpp: 13 server logs from 2026-09-25 to 2026-10-02, with per-log
-  medians from 43.88 to 58.55 t/s.
-- Flash-Next IQ3_S on Strata (65536 context): one session on 2026-10-05,
-  19 tasks, median 35.2 t/s (range 30.0-42.2).
+The claim under test was "the 27B is the better choice on this machine". It counted
+as supported only if the 27B had at least as many correct answers **and** a median
+wall time no higher than Strata's.
 
-On these numbers the 27B writes faster per token. But these are different
-tasks, and per-token speed is not time to a finished answer: a model that
-needs fewer tokens or fewer tool rounds can still finish first. I have not run
-the same task on both models; that comparison is the next measurement.
+| 27B (llama.cpp) | answer | prefill t/s | gen t/s | wall s | completion tokens |
+|---|---|---|---|---|---|
+| shot 1 | 6 | 827.4 | 56.4 | 31.6 | 586 |
+| shot 2 | 6 | 821.5 | 56.6 | 27.8 | 367 |
+| shot 3 | 6 | 818.2 | 57.4 | 31.3 | 569 |
+| shot 4 | 6 | 817.1 | 59.3 | 70.5 | 2,911 |
+| shot 5 | 6 | 813.9 | 56.9 | 31.6 | 572 |
+
+| Flash-Next IQ3_S (Strata) | answer | prefill t/s | gen t/s | wall s | completion tokens |
+|---|---|---|---|---|---|
+| shot 1 | 6 | 688.0 | 42.7 | 36.1 | 454 |
+| shot 2 | 6 | 688.0 | 42.7 | 36.1 | 454 |
+| shot 3 | 6 | 687.6 | 43.5 | 36.0 | 454 |
+| shot 4 | 6 | 688.1 | 43.1 | 36.0 | 454 |
+| shot 5 | **5** | 687.3 | 42.8 | 34.5 | 383 |
+
+| | correct | median wall | RAM used | VmSwap | VRAM free |
+|---|---|---|---|---|---|
+| 27B | 5 / 5 | 31.6 s | ~9.6 GB | 0 | 662 MiB |
+| Strata | 4 / 5 | 36.0 s | ~55.6 GB | 0 | 428 MiB |
+
+**Rule applied: 5 >= 4 correct and 31.6 s <= 36.0 s, so the claim is supported.**
+Strata got Flash-Next from about 13 t/s on llama.cpp (entry 6) to about 43 t/s:
+a big engineering result, and it was tested properly. On this machine it still
+loses to the dense 27B on the same test. The 27B was faster to a finished answer
+in four of five shots, and it was right every time. With it loaded, 52,957 MiB of
+RAM stays available, vs 7,071 MiB under Strata, which also needs swap off. One more Strata
+shot at 65536 answered 5 (the open problem in entry 11). That makes it wrong
+in 5 of 16 runs at 65536 across the two days, and the cause is still unexplained.
+**Strata is set aside, and the 27B stays the daily model.** The 27B's one slow shot
+(70.5 s) came from a long reasoning run (2,911 tokens), not from the server; even
+counting it, its median is the lower one.
 
 ---
 
