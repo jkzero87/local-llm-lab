@@ -11,7 +11,7 @@ llm-pi-ai:
       compat:
         supportsReasoningEffort: true
       models:
-        - id: /home/jkzero/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf
+        - id: ~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf
           name: Qwen3.8 Flash-Next
           contextWindow: 98304
           maxTokens: 16384
@@ -29,7 +29,7 @@ llm-pi-ai:
       compat:
         supportsReasoningEffort: true
       models:
-        - id: /home/jkzero/models/Qwen3.8-27B/Qwen3.8-27B-UD-IQ4_XS.gguf
+        - id: ~/models/Qwen3.8-27B/Qwen3.8-27B-UD-IQ4_XS.gguf
           name: Qwen 3.8 27B
           contextWindow: 32768
           maxTokens: 16384
@@ -43,7 +43,7 @@ agent-presets:
   default: standard-light
 agent-default-model:
   provider: llamacpp-local
-  model: /home/jkzero/models/Qwen3.8-27B/Qwen3.8-27B-UD-IQ4_XS.gguf
+  model: ~/models/Qwen3.8-27B/Qwen3.8-27B-UD-IQ4_XS.gguf
 
 web:
   searchProvider: ddg
