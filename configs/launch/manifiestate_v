@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Stack con VISION: imgproxy (:8091) + 27B GSQ + mmproj a 49152 (:8092) + dsh web (:3080)
+systemctl --user start imgproxy
+nohup ~/bin/start_27b_gsq_vision.sh >/dev/null 2>&1 &
+echo "cargando modelo..."
+until curl -sf localhost:8092/health >/dev/null; do sleep 2; done
+echo "modelo listo"
+nohup dsh --profile web > ~/logs/dsh_vision.log 2>&1 &
+echo "dsh en http://localhost:3080"
+tail -f ~/logs/llama_vision.log

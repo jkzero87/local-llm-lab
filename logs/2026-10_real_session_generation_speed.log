@@ -1,0 +1,52 @@
+# Per-token generation speed in real dsh sessions: 27B GSQ (llama.cpp) vs Flash-Next IQ3_S (Strata). Not the same tasks.
+# Measurement lines only, copied from the files named in each ### header (home dir shown as ~).
+
+### ~/logs/27b_gsq_2026*.log (llama.cpp build 10751, 27B GSQ IQ3_S + MTP, served to dsh) - per-task "eval time" lines with >= 200 generated tokens, summarised
+~/logs/27b_gsq_20260925_2007.log: tasks=4 median=47.49 t/s min=34.52 max=56.00
+~/logs/27b_gsq_20260926_1213.log: tasks=280 median=51.69 t/s min=36.19 max=64.05
+~/logs/27b_gsq_20260926_2104.log: tasks=24 median=47.14 t/s min=35.23 max=61.45
+~/logs/27b_gsq_20260927_1015.log: tasks=61 median=45.76 t/s min=38.97 max=55.08
+~/logs/27b_gsq_20260927_1118.log: tasks=29 median=43.88 t/s min=32.12 max=55.06
+~/logs/27b_gsq_20260927_1226.log: tasks=144 median=46.38 t/s min=33.39 max=60.22
+~/logs/27b_gsq_20260927_1855.log: tasks=66 median=44.66 t/s min=37.09 max=54.49
+~/logs/27b_gsq_20260928_1504.log: tasks=37 median=48.21 t/s min=36.27 max=63.32
+~/logs/27b_gsq_20260928_1750.log: tasks=59 median=48.65 t/s min=34.12 max=56.30
+~/logs/27b_gsq_20260929_1551.log: tasks=104 median=47.63 t/s min=36.38 max=65.11
+~/logs/27b_gsq_20260930_1519.log: tasks=830 median=58.55 t/s min=40.15 max=66.19
+~/logs/27b_gsq_20261001_1348.log: tasks=1123 median=55.66 t/s min=46.04 max=64.07
+~/logs/27b_gsq_20261002_1529.log: tasks=631 median=57.42 t/s min=42.98 max=64.69
+
+### ~/logs/strata_iq3s_20261005_1750.log (Strata IQ3_S, 65536 ctx, served to dsh via strata_up) - "done:" lines
+[strata] done: 64 tokens in 5 s (38.0 tok/s) (length, cancel=False), expert cache 63.5% hit (+4.3% of the routed experts over PCIe)
+[strata] done: 74 tokens in 18 s (33.7 tok/s) (stop, cancel=False), expert cache 58.9% hit (+5.1% of the routed experts over PCIe)
+[strata] done: 95 tokens in 7 s (36.9 tok/s) (stop, cancel=False), expert cache 67.4% hit (+3.7% of the routed experts over PCIe)
+[strata] done: 710 tokens in 24 s (36.0 tok/s) (stop, cancel=False), expert cache 72.4% hit (+3.2% of the routed experts over PCIe)
+[strata] done: 148 tokens in 6 s (28.6 tok/s) (stop, cancel=False), expert cache 65.2% hit (+4.2% of the routed experts over PCIe)
+[strata] done: 753 tokens in 27 s (36.6 tok/s) (stop, cancel=False), expert cache 72.0% hit (+3.2% of the routed experts over PCIe)
+[strata] done: 64 tokens in 5 s (28.8 tok/s) (length, cancel=False), expert cache 48.5% hit (+6.5% of the routed experts over PCIe)
+[strata] done: 115 tokens in 18 s (31.6 tok/s) (stop, cancel=False), expert cache 69.3% hit (+3.6% of the routed experts over PCIe)
+[strata] done: 98 tokens in 10 s (33.4 tok/s) (stop, cancel=False), expert cache 67.6% hit (+3.8% of the routed experts over PCIe)
+[strata] done: 125 tokens in 8 s (32.2 tok/s) (stop, cancel=False), expert cache 69.4% hit (+3.4% of the routed experts over PCIe)
+[strata] done: 109 tokens in 7 s (37.9 tok/s) (stop, cancel=False), expert cache 77.0% hit (+2.7% of the routed experts over PCIe)
+[strata] done: 984 tokens in 31 s (36.9 tok/s) (stop, cancel=False), expert cache 74.2% hit (+3.0% of the routed experts over PCIe)
+[strata] done: 64 tokens in 7 s (29.7 tok/s) (length, cancel=False), expert cache 41.3% hit (+7.0% of the routed experts over PCIe)
+[strata] done: 196 tokens in 22 s (29.8 tok/s) (stop, cancel=False), expert cache 57.2% hit (+5.5% of the routed experts over PCIe)
+[strata] done: 403 tokens in 12 s (34.6 tok/s) (stop, cancel=False), expert cache 68.3% hit (+3.9% of the routed experts over PCIe)
+[strata] done: 852 tokens in 26 s (39.6 tok/s) (stop, cancel=False), expert cache 75.1% hit (+2.9% of the routed experts over PCIe)
+[strata] done: 1432 tokens in 39 s (42.2 tok/s) (stop, cancel=False), expert cache 76.9% hit (+2.6% of the routed experts over PCIe)
+[strata] done: 3350 tokens in 88 s (38.8 tok/s) (stop, cancel=False), expert cache 72.6% hit (+3.3% of the routed experts over PCIe)
+[strata] done: 234 tokens in 15 s (30.0 tok/s) (stop, cancel=False), expert cache 59.0% hit (+5.1% of the routed experts over PCIe)
+[strata] done: 457 tokens in 17 s (32.5 tok/s) (stop, cancel=False), expert cache 63.0% hit (+4.5% of the routed experts over PCIe)
+[strata] done: 121 tokens in 5 s (33.7 tok/s) (stop, cancel=False), expert cache 56.6% hit (+5.7% of the routed experts over PCIe)
+[strata] done: 785 tokens in 28 s (33.6 tok/s) (stop, cancel=False), expert cache 69.5% hit (+3.6% of the routed experts over PCIe)
+[strata] done: 136 tokens in 4 s (38.2 tok/s) (stop, cancel=False), expert cache 60.4% hit (+5.6% of the routed experts over PCIe)
+[strata] done: 257 tokens in 9 s (32.2 tok/s) (stop, cancel=False), expert cache 60.8% hit (+4.8% of the routed experts over PCIe)
+[strata] done: 331 tokens in 15 s (33.2 tok/s) (stop, cancel=False), expert cache 65.3% hit (+4.2% of the routed experts over PCIe)
+[strata] done: 201 tokens in 11 s (35.2 tok/s) (stop, cancel=False), expert cache 64.6% hit (+4.1% of the routed experts over PCIe)
+[strata] done: 1890 tokens in 55 s (37.8 tok/s) (stop, cancel=False), expert cache 69.0% hit (+3.9% of the routed experts over PCIe)
+[strata] done: 274 tokens in 10 s (32.3 tok/s) (stop, cancel=False), expert cache 60.0% hit (+4.6% of the routed experts over PCIe)
+[strata] done: 1375 tokens in 40 s (38.8 tok/s) (stop, cancel=False), expert cache 70.7% hit (+3.7% of the routed experts over PCIe)
+[strata] done: 608 tokens in 19 s (34.2 tok/s) (stop, cancel=False), expert cache 61.8% hit (+4.8% of the routed experts over PCIe)
+[strata] done: 254 tokens in 15 s (33.3 tok/s) (stop, cancel=False), expert cache 59.2% hit (+5.4% of the routed experts over PCIe)
+[strata] done: 2062 tokens in 53 s (39.6 tok/s) (stop, cancel=False), expert cache 67.4% hit (+4.4% of the routed experts over PCIe)
+

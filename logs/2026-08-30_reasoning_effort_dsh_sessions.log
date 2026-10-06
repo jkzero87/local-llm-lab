@@ -1,0 +1,187 @@
+# Same dsh prompt ("Audita mi instalacion de dsh"), Flash-Next UD-IQ4_XS, -c 98304, dsh sessions of 2026-08-30
+# Measurement lines only, copied from the files named in each ### header (home dir shown as ~).
+
+### ~/.dsh/sessions/--home-USER-dsh-scratch--/session-960c2dbf-428a-4ade-8f18-dfab33a44f7e/session.v4.jsonl.zstd (records listed below, decoded)
+request/header config: provider=flashnext-local model=~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf reasoningEffort=(not sent) maxTokens=16384
+request/context contextWindow=98304
+user/message first line: Audita mi instalación de dsh y escribe un informe en ~/dsh-scratch/dsh_audit.md.
+2026-08-30 10:17:56 turn/start {"turn": 1}
+2026-08-30 10:31:09 turn/end {"turn": 1, "reason": {"kind": "completed"}}
+assistant/message usage records: 10, sum outputTokens = 5108
+
+### ~/.dsh/sessions/--home-USER-dsh-scratch--/session-fe040eb3-61de-411f-aa1f-bb861931e651/session.v4.jsonl.zstd (records listed below, decoded)
+request/header config: provider=flashnext-local model=~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf reasoningEffort=(not sent) maxTokens=16384
+request/context contextWindow=98304
+user/message first line: Audita mi instalación de dsh y escribe un informe en ~/dsh-scratch/dsh_audit.md.
+2026-08-30 10:46:06 turn/start {"turn": 1}
+2026-08-30 10:51:06 llm/retry retry=1/5 failure={"message": "pi-ai stream idle timeout after 300000ms", "code": "TIMEOUT"}
+2026-08-30 10:51:40 turn/end {"turn": 1, "reason": {"kind": "aborted", "reason": {"kind": "user"}}}
+assistant/message usage records: 0, sum outputTokens = 0
+
+### ~/.dsh/sessions/--home-USER-dsh-scratch--/session-e6911e39-bd06-4fb5-ae6c-7dcd463fb35a/session.v4.jsonl.zstd (records listed below, decoded)
+request/header config: provider=flashnext-local model=~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf reasoningEffort=(not sent) maxTokens=16384
+request/context contextWindow=98304
+user/message first line: Audita mi instalación de dsh y escribe un informe en ~/dsh-scratch/dsh_audit.md.
+2026-08-30 10:52:44 turn/start {"turn": 1}
+2026-08-30 11:21:37 turn/end {"turn": 1, "reason": {"kind": "completed"}}
+assistant/message usage records: 32, sum outputTokens = 15754
+
+### ~/.dsh/sessions/--home-USER-dsh-scratch--/session-d3abf75a-2c26-4a55-8794-f8370010d4b6/session.v4.jsonl.zstd (records listed below, decoded)
+request/header config: provider=flashnext-local model=~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf reasoningEffort=low maxTokens=16384
+request/context contextWindow=98304
+user/message first line: Audita mi instalación de dsh y escribe un informe en ~/dsh-scratch/dsh_audit.md.
+2026-08-30 09:15:30 turn/start {"turn": 1}
+2026-08-30 09:34:45 turn/end {"turn": 1, "reason": {"kind": "completed"}}
+assistant/message usage records: 6, sum outputTokens = 6796
+
+### ~/logs/flashnext_preserve_1001.log
+0.00.233.087 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.20.336.978 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 98304, kv_unified = 'false'
+16.36.774.205 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+17.02.995.481 I slot print_timing: id  0 | task 0 | prompt eval time =   21046.58 ms /   467 tokens (   45.07 ms per token,    22.19 tokens per second)
+17.02.995.486 I slot print_timing: id  0 | task 0 |        eval time =    5174.66 ms /    64 tokens (   82.14 ms per token,    12.17 tokens per second)
+17.03.224.833 I slot launch_slot_: id  0 | task 2 | processing task, is_child = 0
+19.44.605.965 I slot print_timing: id  0 | task 2 | prompt eval time =  154458.19 ms /  9528 tokens (   16.21 ms per token,    61.69 tokens per second)
+19.44.605.971 I slot print_timing: id  0 | task 2 |        eval time =    6922.76 ms /    86 tokens (   81.44 ms per token,    12.28 tokens per second)
+19.45.575.049 I slot launch_slot_: id  0 | task 166 | processing task, is_child = 0
+20.24.035.060 I slot print_timing: id  0 | task 166 | prompt eval time =   14706.83 ms /  1035 tokens (   14.21 ms per token,    70.38 tokens per second)
+20.24.035.065 I slot print_timing: id  0 | task 166 |        eval time =   23753.15 ms /   302 tokens (   78.91 ms per token,    12.67 tokens per second)
+20.24.340.427 I slot launch_slot_: id  0 | task 471 | processing task, is_child = 0
+22.54.593.080 I slot print_timing: id  0 | task 471 | prompt eval time =  120136.16 ms /  8310 tokens (   14.46 ms per token,    69.17 tokens per second)
+22.54.593.086 I slot print_timing: id  0 | task 471 |        eval time =   30116.45 ms /   359 tokens (   84.12 ms per token,    11.89 tokens per second)
+22.54.760.410 I slot launch_slot_: id  0 | task 840 | processing task, is_child = 0
+23.19.222.277 I slot print_timing: id  0 | task 840 | prompt eval time =   11505.03 ms /   656 tokens (   17.54 ms per token,    57.02 tokens per second)
+23.19.222.282 I slot print_timing: id  0 | task 840 |        eval time =   12956.81 ms /   153 tokens (   85.24 ms per token,    11.73 tokens per second)
+23.19.319.928 I slot launch_slot_: id  0 | task 996 | processing task, is_child = 0
+23.39.306.517 I slot print_timing: id  0 | task 996 | prompt eval time =    5685.37 ms /   241 tokens (   23.59 ms per token,    42.39 tokens per second)
+23.39.306.522 I slot print_timing: id  0 | task 996 |        eval time =   14301.18 ms /   170 tokens (   84.62 ms per token,    11.82 tokens per second)
+23.39.424.752 I slot launch_slot_: id  0 | task 1168 | processing task, is_child = 0
+24.07.761.870 I slot print_timing: id  0 | task 1168 | prompt eval time =    4214.09 ms /   128 tokens (   32.92 ms per token,    30.37 tokens per second)
+24.07.761.875 I slot print_timing: id  0 | task 1168 |        eval time =   24122.99 ms /   284 tokens (   85.24 ms per token,    11.73 tokens per second)
+24.07.895.242 I slot launch_slot_: id  0 | task 1454 | processing task, is_child = 0
+28.21.082.893 I slot print_timing: id  0 | task 1454 | prompt eval time =    6340.08 ms /   306 tokens (   20.72 ms per token,    48.26 tokens per second)
+28.21.082.898 I slot print_timing: id  0 | task 1454 |        eval time =  246847.53 ms /  2857 tokens (   86.43 ms per token,    11.57 tokens per second)
+28.21.222.946 I slot launch_slot_: id  0 | task 4313 | processing task, is_child = 0
+28.32.730.016 I slot print_timing: id  0 | task 4313 | prompt eval time =    2572.47 ms /    52 tokens (   49.47 ms per token,    20.21 tokens per second)
+28.32.730.025 I slot print_timing: id  0 | task 4313 |        eval time =    8934.45 ms /   103 tokens (   87.59 ms per token,    11.42 tokens per second)
+28.32.844.391 I slot launch_slot_: id  0 | task 4418 | processing task, is_child = 0
+28.46.178.840 I slot print_timing: id  0 | task 4418 | prompt eval time =    4585.15 ms /   129 tokens (   35.54 ms per token,    28.13 tokens per second)
+28.46.178.845 I slot print_timing: id  0 | task 4418 |        eval time =    8749.27 ms /   101 tokens (   87.49 ms per token,    11.43 tokens per second)
+28.46.298.052 I slot launch_slot_: id  0 | task 4521 | processing task, is_child = 0
+29.49.370.140 I slot print_timing: id  0 | task 4521 | prompt eval time =    2337.79 ms /    36 tokens (   64.94 ms per token,    15.40 tokens per second)
+29.49.370.146 I slot print_timing: id  0 | task 4521 |        eval time =   60734.26 ms /   693 tokens (   87.77 ms per token,    11.39 tokens per second)
+
+### ~/logs/flashnext_low_1043.log
+0.00.216.186 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.33.000.515 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 98304, kv_unified = 'false'
+2.15.788.109 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+3.15.794.176 W srv          stop: cancel task, id_task = 0
+4.14.389.757 I slot launch_slot_: id  0 | task 2 | processing task, is_child = 0
+7.16.405.080 W srv          stop: cancel task, id_task = 2
+7.32.300.598 I slot launch_slot_: id  0 | task 7 | processing task, is_child = 0
+7.50.303.057 W srv          stop: cancel task, id_task = 7
+8.53.726.508 I slot launch_slot_: id  0 | task 12 | processing task, is_child = 0
+9.06.051.807 I slot print_timing: id  0 | task 12 | prompt eval time =    6982.47 ms /   377 tokens (   18.52 ms per token,    53.99 tokens per second)
+9.06.051.816 I slot print_timing: id  0 | task 12 |        eval time =    5342.78 ms /    64 tokens (   84.81 ms per token,    11.79 tokens per second)
+9.06.799.947 I slot launch_slot_: id  0 | task 13 | processing task, is_child = 0
+10.46.446.765 I slot print_timing: id  0 | task 13 | prompt eval time =   74348.66 ms /  4434 tokens (   16.77 ms per token,    59.64 tokens per second)
+10.46.446.772 I slot print_timing: id  0 | task 13 |        eval time =   25298.12 ms /   317 tokens (   80.06 ms per token,    12.49 tokens per second)
+10.47.377.414 I slot launch_slot_: id  0 | task 403 | processing task, is_child = 0
+11.04.477.133 I slot print_timing: id  0 | task 403 | prompt eval time =   13634.70 ms /  1045 tokens (   13.05 ms per token,    76.64 tokens per second)
+11.04.477.138 I slot print_timing: id  0 | task 403 |        eval time =    3464.98 ms /    46 tokens (   77.00 ms per token,    12.99 tokens per second)
+11.04.559.958 I slot launch_slot_: id  0 | task 452 | processing task, is_child = 0
+11.44.120.694 I slot print_timing: id  0 | task 452 | prompt eval time =   12284.85 ms /   840 tokens (   14.62 ms per token,    68.38 tokens per second)
+11.44.120.700 I slot print_timing: id  0 | task 452 |        eval time =   27275.85 ms /   354 tokens (   77.27 ms per token,    12.94 tokens per second)
+11.44.232.959 I slot launch_slot_: id  0 | task 809 | processing task, is_child = 0
+12.20.131.108 I slot print_timing: id  0 | task 809 | prompt eval time =   11075.40 ms /   674 tokens (   16.43 ms per token,    60.86 tokens per second)
+12.20.131.115 I slot print_timing: id  0 | task 809 |        eval time =   24822.72 ms /   316 tokens (   78.80 ms per token,    12.69 tokens per second)
+12.20.336.610 I slot launch_slot_: id  0 | task 1128 | processing task, is_child = 0
+13.04.420.989 I slot print_timing: id  0 | task 1128 | prompt eval time =   20613.06 ms /  1333 tokens (   15.46 ms per token,    64.67 tokens per second)
+13.04.420.994 I slot print_timing: id  0 | task 1128 |        eval time =   23471.29 ms /   297 tokens (   79.29 ms per token,    12.61 tokens per second)
+13.04.542.695 I slot launch_slot_: id  0 | task 1428 | processing task, is_child = 0
+13.29.425.727 I slot print_timing: id  0 | task 1428 | prompt eval time =    6133.12 ms /   425 tokens (   14.43 ms per token,    69.30 tokens per second)
+13.29.425.731 I slot print_timing: id  0 | task 1428 |        eval time =   18749.88 ms /   237 tokens (   79.45 ms per token,    12.59 tokens per second)
+13.29.538.203 I slot launch_slot_: id  0 | task 1667 | processing task, is_child = 0
+13.47.371.515 I slot print_timing: id  0 | task 1667 | prompt eval time =    5403.76 ms /   201 tokens (   26.88 ms per token,    37.20 tokens per second)
+13.47.371.521 I slot print_timing: id  0 | task 1667 |        eval time =   12429.52 ms /   155 tokens (   80.71 ms per token,    12.39 tokens per second)
+13.47.504.276 I slot launch_slot_: id  0 | task 1824 | processing task, is_child = 0
+14.07.706.685 I slot print_timing: id  0 | task 1824 | prompt eval time =    6136.29 ms /   321 tokens (   19.12 ms per token,    52.31 tokens per second)
+14.07.706.690 I slot print_timing: id  0 | task 1824 |        eval time =   14066.08 ms /   175 tokens (   80.84 ms per token,    12.37 tokens per second)
+14.07.799.311 I slot launch_slot_: id  0 | task 2001 | processing task, is_child = 0
+14.21.278.777 I slot print_timing: id  0 | task 2001 | prompt eval time =    4756.29 ms /   129 tokens (   36.87 ms per token,    27.12 tokens per second)
+14.21.278.781 I slot print_timing: id  0 | task 2001 |        eval time =    8723.14 ms /   110 tokens (   80.03 ms per token,    12.50 tokens per second)
+14.21.369.479 I slot launch_slot_: id  0 | task 2113 | processing task, is_child = 0
+15.44.875.334 I slot print_timing: id  0 | task 2113 | prompt eval time =   14808.20 ms /  1001 tokens (   14.79 ms per token,    67.60 tokens per second)
+15.44.875.341 I slot print_timing: id  0 | task 2113 |        eval time =   68697.63 ms /   826 tokens (   83.27 ms per token,    12.01 tokens per second)
+15.45.639.387 I slot launch_slot_: id  0 | task 2942 | processing task, is_child = 0
+16.13.749.549 I slot print_timing: id  0 | task 2942 | prompt eval time =   19315.54 ms /  1387 tokens (   13.93 ms per token,    71.81 tokens per second)
+16.13.749.554 I slot print_timing: id  0 | task 2942 |        eval time =    8794.59 ms /   110 tokens (   80.68 ms per token,    12.39 tokens per second)
+16.13.869.810 I slot launch_slot_: id  0 | task 3055 | processing task, is_child = 0
+17.00.196.304 I slot print_timing: id  0 | task 3055 | prompt eval time =    5360.48 ms /   394 tokens (   13.61 ms per token,    73.50 tokens per second)
+17.00.196.309 I slot print_timing: id  0 | task 3055 |        eval time =   40965.97 ms /   498 tokens (   82.43 ms per token,    12.13 tokens per second)
+17.00.416.126 I slot launch_slot_: id  0 | task 3555 | processing task, is_child = 0
+17.20.995.976 I slot print_timing: id  0 | task 3555 | prompt eval time =    5439.50 ms /   198 tokens (   27.47 ms per token,    36.40 tokens per second)
+17.20.995.983 I slot print_timing: id  0 | task 3555 |        eval time =   15140.31 ms /   184 tokens (   82.73 ms per token,    12.09 tokens per second)
+17.21.112.641 I slot launch_slot_: id  0 | task 3741 | processing task, is_child = 0
+17.35.626.436 I slot print_timing: id  0 | task 3741 | prompt eval time =    4696.52 ms /   126 tokens (   37.27 ms per token,    26.83 tokens per second)
+17.35.626.443 I slot print_timing: id  0 | task 3741 |        eval time =    9817.25 ms /   121 tokens (   81.81 ms per token,    12.22 tokens per second)
+17.35.743.414 I slot launch_slot_: id  0 | task 3864 | processing task, is_child = 0
+18.27.708.561 I slot print_timing: id  0 | task 3864 | prompt eval time =   13578.07 ms /   820 tokens (   16.56 ms per token,    60.39 tokens per second)
+18.27.708.567 I slot print_timing: id  0 | task 3864 |        eval time =   38387.04 ms /   453 tokens (   84.93 ms per token,    11.77 tokens per second)
+18.27.831.035 I slot launch_slot_: id  0 | task 4320 | processing task, is_child = 0
+18.50.131.719 I slot print_timing: id  0 | task 4320 | prompt eval time =    3629.00 ms /    89 tokens (   40.78 ms per token,    24.52 tokens per second)
+18.50.131.724 I slot print_timing: id  0 | task 4320 |        eval time =   18671.65 ms /   227 tokens (   82.62 ms per token,    12.10 tokens per second)
+18.50.261.950 I slot launch_slot_: id  0 | task 4549 | processing task, is_child = 0
+19.27.675.109 I slot print_timing: id  0 | task 4549 | prompt eval time =    7261.84 ms /   397 tokens (   18.29 ms per token,    54.67 tokens per second)
+19.27.675.115 I slot print_timing: id  0 | task 4549 |        eval time =   30151.29 ms /   354 tokens (   85.41 ms per token,    11.71 tokens per second)
+19.27.796.883 I slot launch_slot_: id  0 | task 4905 | processing task, is_child = 0
+20.15.732.270 I slot print_timing: id  0 | task 4905 | prompt eval time =    5427.06 ms /   270 tokens (   20.10 ms per token,    49.75 tokens per second)
+20.15.732.276 I slot print_timing: id  0 | task 4905 |        eval time =   42508.28 ms /   498 tokens (   85.53 ms per token,    11.69 tokens per second)
+20.16.965.854 I slot launch_slot_: id  0 | task 5405 | processing task, is_child = 0
+20.53.664.755 I slot print_timing: id  0 | task 5405 | prompt eval time =    5723.01 ms /   224 tokens (   25.55 ms per token,    39.14 tokens per second)
+20.53.664.762 I slot print_timing: id  0 | task 5405 |        eval time =   30975.86 ms /   356 tokens (   87.26 ms per token,    11.46 tokens per second)
+20.53.901.178 I slot launch_slot_: id  0 | task 5763 | processing task, is_child = 0
+21.10.372.460 I slot print_timing: id  0 | task 5763 | prompt eval time =    1688.31 ms /    33 tokens (   51.16 ms per token,    19.55 tokens per second)
+21.10.372.465 I slot print_timing: id  0 | task 5763 |        eval time =   14782.94 ms /   172 tokens (   86.45 ms per token,    11.57 tokens per second)
+21.10.592.676 I slot launch_slot_: id  0 | task 5937 | processing task, is_child = 0
+21.38.026.150 I slot print_timing: id  0 | task 5937 | prompt eval time =    3722.80 ms /    75 tokens (   49.64 ms per token,    20.15 tokens per second)
+21.38.026.161 I slot print_timing: id  0 | task 5937 |        eval time =   23710.65 ms /   269 tokens (   88.47 ms per token,    11.30 tokens per second)
+21.38.158.747 I slot launch_slot_: id  0 | task 6208 | processing task, is_child = 0
+22.05.705.357 I slot print_timing: id  0 | task 6208 | prompt eval time =   10768.20 ms /   595 tokens (   18.10 ms per token,    55.26 tokens per second)
+22.05.705.362 I slot print_timing: id  0 | task 6208 |        eval time =   16778.38 ms /   193 tokens (   87.39 ms per token,    11.44 tokens per second)
+22.05.833.848 I slot launch_slot_: id  0 | task 6404 | processing task, is_child = 0
+22.43.189.599 I slot print_timing: id  0 | task 6404 | prompt eval time =   14044.06 ms /   738 tokens (   19.03 ms per token,    52.55 tokens per second)
+22.43.189.606 I slot print_timing: id  0 | task 6404 |        eval time =   23311.30 ms /   261 tokens (   89.66 ms per token,    11.15 tokens per second)
+22.43.319.176 I slot launch_slot_: id  0 | task 6668 | processing task, is_child = 0
+23.09.275.342 I slot print_timing: id  0 | task 6668 | prompt eval time =    6712.29 ms /   398 tokens (   16.87 ms per token,    59.29 tokens per second)
+23.09.275.348 I slot print_timing: id  0 | task 6668 |        eval time =   19243.84 ms /   218 tokens (   88.68 ms per token,    11.28 tokens per second)
+23.09.413.290 I slot launch_slot_: id  0 | task 6888 | processing task, is_child = 0
+23.34.034.590 I slot print_timing: id  0 | task 6888 | prompt eval time =    6842.52 ms /   337 tokens (   20.30 ms per token,    49.25 tokens per second)
+23.34.034.597 I slot print_timing: id  0 | task 6888 |        eval time =   17778.74 ms /   203 tokens (   88.01 ms per token,    11.36 tokens per second)
+23.34.173.496 I slot launch_slot_: id  0 | task 7093 | processing task, is_child = 0
+26.30.173.896 I slot print_timing: id  0 | task 7093 | prompt eval time =    5803.61 ms /   198 tokens (   29.31 ms per token,    34.12 tokens per second)
+26.30.173.902 I slot print_timing: id  0 | task 7093 |        eval time =  170196.75 ms /  1851 tokens (   92.00 ms per token,    10.87 tokens per second)
+26.30.318.656 I slot launch_slot_: id  0 | task 8946 | processing task, is_child = 0
+27.00.564.164 I slot print_timing: id  0 | task 8946 | prompt eval time =    7433.70 ms /   369 tokens (   20.15 ms per token,    49.64 tokens per second)
+27.00.564.170 I slot print_timing: id  0 | task 8946 |        eval time =   22811.77 ms /   252 tokens (   90.88 ms per token,    11.00 tokens per second)
+27.00.714.804 I slot launch_slot_: id  0 | task 9200 | processing task, is_child = 0
+27.36.963.490 I slot print_timing: id  0 | task 9200 | prompt eval time =    7634.03 ms /   398 tokens (   19.18 ms per token,    52.13 tokens per second)
+27.36.963.495 I slot print_timing: id  0 | task 9200 |        eval time =   28614.62 ms /   315 tokens (   91.13 ms per token,    10.97 tokens per second)
+27.37.119.253 I slot launch_slot_: id  0 | task 9517 | processing task, is_child = 0
+28.33.602.592 I slot print_timing: id  0 | task 9517 | prompt eval time =    7434.47 ms /   379 tokens (   19.62 ms per token,    50.98 tokens per second)
+28.33.602.597 I slot print_timing: id  0 | task 9517 |        eval time =   49048.84 ms /   528 tokens (   93.07 ms per token,    10.74 tokens per second)
+28.33.729.470 I slot launch_slot_: id  0 | task 10047 | processing task, is_child = 0
+36.00.795.584 I slot print_timing: id  0 | task 10047 | prompt eval time =    1750.54 ms /    33 tokens (   53.05 ms per token,    18.85 tokens per second)
+36.00.795.589 I slot print_timing: id  0 | task 10047 |        eval time =  445315.54 ms /  4837 tokens (   92.08 ms per token,    10.86 tokens per second)
+36.01.648.425 I slot launch_slot_: id  0 | task 14886 | processing task, is_child = 0
+36.23.079.989 I slot print_timing: id  0 | task 14886 | prompt eval time =    2738.47 ms /    52 tokens (   52.66 ms per token,    18.99 tokens per second)
+36.23.079.995 I slot print_timing: id  0 | task 14886 |        eval time =   18693.06 ms /   199 tokens (   94.41 ms per token,    10.59 tokens per second)
+36.23.263.598 I slot launch_slot_: id  0 | task 15087 | processing task, is_child = 0
+37.46.252.925 I slot print_timing: id  0 | task 15087 | prompt eval time =    1773.37 ms /    33 tokens (   53.74 ms per token,    18.61 tokens per second)
+37.46.252.935 I slot print_timing: id  0 | task 15087 |        eval time =   81215.66 ms /   822 tokens (   98.92 ms per token,    10.11 tokens per second)
+
+### ~/logs/effort_proxy/resp_{low,medium,high}.json (footnote: one small logic puzzle, Strata IQ3_S, temperature 0)
+low: completion_tokens=653 prompt_ms=2842.7 predicted_ms=14618.1 predicted_per_second=44.7
+medium: completion_tokens=806 prompt_ms=2015.1 predicted_ms=17050.5 predicted_per_second=47.3
+high: completion_tokens=335 prompt_ms=2799.9 predicted_ms=7966.1 predicted_per_second=42.1
+

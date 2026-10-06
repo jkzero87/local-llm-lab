@@ -1,0 +1,62 @@
+# ngram speculative decoding on Flash-Next UD-IQ4_XS (experts in RAM), 17.5k marker, runs A-F
+# Measurement lines only, copied from the files named in each ### header (home dir shown as ~).
+
+### ~/bench/ngram_A_172827.log
+0.00.165.929 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.09.623.641 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+1.54.465.099 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t = 104.42 s / 167.97 tokens per second
+2.24.340.686 I slot print_timing: id  0 | task 0 | prompt eval time =  104945.37 ms / 17543 tokens (    5.98 ms per token,   167.16 tokens per second)
+2.24.340.691 I slot print_timing: id  0 | task 0 |        eval time =   29346.78 ms /   387 tokens (   76.03 ms per token,    13.15 tokens per second)
+2.24.340.693 I slot print_timing: id  0 | task 0 |       total time =  134292.15 ms / 17930 tokens
+
+### ~/bench/ngram_B_173432.log
+0.00.253.380 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.36.977.818 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+2.56.292.547 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t = 135.43 s / 129.51 tokens per second
+4.05.038.539 E CUDA error: the launch timed out and was terminated
+
+### ~/bench/ngram_C_174213.log
+0.00.366.386 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.20.520.163 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+1.58.326.651 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t =  93.96 s / 186.67 tokens per second
+2.26.949.191 I slot print_timing: id  0 | task 0 | prompt eval time =   94442.76 ms / 17543 tokens (    5.38 ms per token,   185.75 tokens per second)
+2.26.949.196 I slot print_timing: id  0 | task 0 |        eval time =   28139.40 ms /   354 tokens (   79.72 ms per token,    12.54 tokens per second)
+2.26.949.198 I slot print_timing: id  0 | task 0 |       total time =  122582.16 ms / 17897 tokens
+
+### ~/bench/ngram_D_174942.log
+0.00.261.331 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.20.215.380 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+2.03.910.844 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t =  99.51 s / 176.25 tokens per second
+4.25.596.204 I slot print_timing: id  0 | task 0 | prompt eval time =  100092.21 ms / 17543 tokens (    5.71 ms per token,   175.27 tokens per second)
+4.25.596.210 I slot print_timing: id  0 | task 0 |        eval time =  141102.51 ms /  1662 tokens (   84.95 ms per token,    11.77 tokens per second)
+4.25.596.212 I slot print_timing: id  0 | task 0 |       total time =  241194.72 ms / 19205 tokens
+4.25.596.230 I slot print_timing: id  0 | task 0 | draft acceptance = 0.43667 (  131 accepted /   300 generated), mean len = 11.08
+
+### ~/bench/ngram_E_175656.log
+0.00.225.559 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.25.092.013 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+2.15.847.160 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t = 105.58 s / 166.13 tokens per second
+3.06.269.134 I slot print_timing: id  0 | task 0 | prompt eval time =  106204.12 ms / 17543 tokens (    6.05 ms per token,   165.18 tokens per second)
+3.06.269.140 I slot print_timing: id  0 | task 0 |        eval time =   49794.59 ms /   616 tokens (   80.97 ms per token,    12.35 tokens per second)
+3.06.269.142 I slot print_timing: id  0 | task 0 |       total time =  155998.72 ms / 18159 tokens
+
+### ~/bench/ngram_F_180703.log
+0.00.156.575 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.26.255.388 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+4.04.689.015 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t = 213.74 s / 82.06 tokens per second
+4.55.283.538 I slot print_timing: id  0 | task 0 | prompt eval time =  214663.79 ms / 17543 tokens (   12.24 ms per token,    81.72 tokens per second)
+4.55.283.544 I slot print_timing: id  0 | task 0 |        eval time =   49673.72 ms /   581 tokens (   85.64 ms per token,    11.68 tokens per second)
+4.55.283.545 I slot print_timing: id  0 | task 0 |       total time =  264337.52 ms / 18124 tokens
+4.55.283.563 I slot print_timing: id  0 | task 0 | draft acceptance = 0.26667 (   32 accepted /   120 generated), mean len =  7.40
+
+### ~/bench/ngram_*.wall
+ngram_A_172827.wall: wall 134.44
+ngram_B_173432.wall: Command exited with non-zero status 52 | wall 222.23
+ngram_C_174213.wall: wall 122.71
+ngram_D_174942.wall: wall 241.34
+ngram_E_175656.wall: wall 156.88
+ngram_F_180703.wall: wall 265.14
+
+### ~/bin/bench_ngram.sh (llama-server line; extra flags per run were passed as "$@" and not logged)
+$BIN -m "$MODEL" -c 32768 -fa on -ctk q8_0 -ctv q8_0 -b 4096 -ub 4096 \
+

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Stop dsh web and Strata (units from strata_up, plus the dated ones from 2026-10-05).
+# systemctl stop waits for each unit's whole cgroup (server.py + engine) to exit.
+set -u
+for u in dsh-web 'dsh-web-*' strata-iq3s 'strata-iq3s-*'; do
+  for unit in $(systemctl --user list-units --plain --no-legend "$u.service" | awk '{print $1}'); do
+    systemctl --user stop "$unit" && echo "$unit stopped"
+  done
+done
+pgrep -f '[e]ngine/strata' >/dev/null && echo "warning: a Strata engine is still running outside the units" >&2
+nvidia-smi --query-gpu=memory.used --format=csv,noheader
+
+# Volver a encender el swap para el uso normal del PC.
+sudo swapon -a && echo "swap encendido"

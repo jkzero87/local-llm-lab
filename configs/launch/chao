@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Stop dsh web (:3080), the model (:8092) and imgproxy (:8091) by PID: the PIDs
+# manifiestate recorded, or, for a service started some other way, the PID
+# that owns its port. Waits until each process is really gone.
+set -u
+RUN=~/.local/state/llmstack
+
+port_pid() { ss -Htlnp "sport = :$1" | grep -oP 'pid=\K[0-9]+' | head -1; }
+matches() { [[ -r /proc/$1/cmdline ]] && tr '\0' ' ' < "/proc/$1/cmdline" | grep -q -- "$2"; }
+
+# stop NAME PORT PATTERN
+stop() {
+  local name=$1 port=$2 pattern=$3 pid="" i
+  [[ -f $RUN/$name.pid ]] && pid=$(<"$RUN/$name.pid")
+  if [[ -z $pid ]] || ! matches "$pid" "$pattern"; then
+    pid=$(port_pid "$port")
+  fi
+  if [[ -z $pid ]] || ! matches "$pid" "$pattern"; then
+    echo "$name: not running"
+    rm -f "$RUN/$name.pid"
+    return
+  fi
+  kill "$pid"
+  for ((i = 0; i < 60; i++)); do kill -0 "$pid" 2>/dev/null || break; sleep 1; done
+  if kill -0 "$pid" 2>/dev/null; then
+    kill -9 "$pid"
+    for ((i = 0; i < 10; i++)); do kill -0 "$pid" 2>/dev/null || break; sleep 1; done
+    echo "$name stopped (pid $pid, needed SIGKILL)"
+  else
+    echo "$name stopped (pid $pid)"
+  fi
+  rm -f "$RUN/$name.pid"
+}
+
+stop dsh 3080 'dsh --profile web'
+stop model 8092 'llama-server'
+stop imgproxy 8091 'imgproxy.py'
+nvidia-smi --query-gpu=memory.used --format=csv,noheader

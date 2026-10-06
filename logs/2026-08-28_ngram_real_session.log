@@ -1,0 +1,80 @@
+# Real dsh sessions on Flash-Next UD-IQ4_XS, -c 32768: without ngram (fn_vision1024_1817) vs with ngram (fn_prod_1830)
+# Measurement lines only, copied from the files named in each ### header (home dir shown as ~).
+
+### ~/logs/fn_vision1024_1817.log
+0.00.315.010 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.20.586.688 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+1.56.331.784 I slot print_timing: id  0 | task 0 | prompt eval time =   28336.09 ms /  1141 tokens (   24.83 ms per token,    40.27 tokens per second)
+1.56.331.790 I slot print_timing: id  0 | task 0 |        eval time =   60878.68 ms /   800 tokens (   76.19 ms per token,    13.12 tokens per second)
+1.56.331.792 I slot print_timing: id  0 | task 0 |       total time =   89214.77 ms /  1941 tokens
+4.05.595.864 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.818 (> 0.100 thold), f_keep = 0.023
+4.10.920.325 I slot print_timing: id  0 | task 804 | prompt eval time =     989.00 ms /    13 tokens (   76.08 ms per token,    13.14 tokens per second)
+4.10.920.333 I slot print_timing: id  0 | task 804 |        eval time =    3951.66 ms /    50 tokens (   80.65 ms per token,    12.40 tokens per second)
+4.10.920.335 I slot print_timing: id  0 | task 804 |       total time =    4940.66 ms /    63 tokens
+6.40.552.618 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.234 (> 0.100 thold), f_keep = 0.385
+6.56.556.637 I slot print_timing: id  0 | task 856 | prompt eval time =   10007.13 ms /   171 tokens (   58.52 ms per token,    17.09 tokens per second)
+6.56.556.643 I slot print_timing: id  0 | task 856 |        eval time =    5409.59 ms /    64 tokens (   85.87 ms per token,    11.65 tokens per second)
+6.56.556.645 I slot print_timing: id  0 | task 856 |       total time =   15416.72 ms /   235 tokens
+8.08.060.995 I slot print_timing: id  0 | task 857 | prompt eval time =   65798.64 ms /  9237 tokens (    7.12 ms per token,   140.38 tokens per second)
+8.08.061.264 I slot print_timing: id  0 | task 857 |        eval time =    5393.49 ms /    63 tokens (   86.99 ms per token,    11.50 tokens per second)
+8.08.061.267 I slot print_timing: id  0 | task 857 |       total time =   71192.13 ms /  9300 tokens
+8.09.173.209 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.958 (> 0.100 thold), f_keep = 1.000
+8.21.844.098 I slot print_timing: id  0 | task 992 | prompt eval time =    6692.61 ms /   405 tokens (   16.52 ms per token,    60.51 tokens per second)
+8.21.844.104 I slot print_timing: id  0 | task 992 |        eval time =    5976.44 ms /    73 tokens (   83.01 ms per token,    12.05 tokens per second)
+8.21.844.107 I slot print_timing: id  0 | task 992 |       total time =   12669.05 ms /   478 tokens
+8.22.324.316 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.964 (> 0.100 thold), f_keep = 1.000
+8.35.471.609 I slot print_timing: id  0 | task 1067 | prompt eval time =    6967.77 ms /   361 tokens (   19.30 ms per token,    51.81 tokens per second)
+8.35.471.618 I slot print_timing: id  0 | task 1067 |        eval time =    6178.70 ms /    81 tokens (   77.23 ms per token,    12.95 tokens per second)
+8.35.471.620 I slot print_timing: id  0 | task 1067 |       total time =   13146.47 ms /   442 tokens
+8.36.908.980 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.965 (> 0.100 thold), f_keep = 1.000
+8.59.104.647 I slot print_timing: id  0 | task 1150 | prompt eval time =    5915.22 ms /   368 tokens (   16.07 ms per token,    62.21 tokens per second)
+8.59.104.653 I slot print_timing: id  0 | task 1150 |        eval time =   16279.67 ms /   200 tokens (   81.81 ms per token,    12.22 tokens per second)
+8.59.104.655 I slot print_timing: id  0 | task 1150 |       total time =   22194.89 ms /   568 tokens
+8.59.273.377 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.998 (> 0.100 thold), f_keep = 1.000
+9.12.864.593 I slot print_timing: id  0 | task 1352 | prompt eval time =    1359.33 ms /    26 tokens (   52.28 ms per token,    19.13 tokens per second)
+9.12.864.601 I slot print_timing: id  0 | task 1352 |        eval time =   12231.06 ms /   153 tokens (   80.47 ms per token,    12.43 tokens per second)
+9.12.864.604 I slot print_timing: id  0 | task 1352 |       total time =   13590.39 ms /   179 tokens
+9.13.200.349 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.974 (> 0.100 thold), f_keep = 1.000
+9.26.123.529 I slot print_timing: id  0 | task 1507 | prompt eval time =    6076.60 ms /   291 tokens (   20.88 ms per token,    47.89 tokens per second)
+9.26.123.535 I slot print_timing: id  0 | task 1507 |        eval time =    6845.88 ms /    88 tokens (   78.69 ms per token,    12.71 tokens per second)
+9.26.123.551 I slot print_timing: id  0 | task 1507 |       total time =   12922.49 ms /   379 tokens
+9.27.423.016 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.948 (> 0.100 thold), f_keep = 1.000
+10.13.107.609 I slot print_timing: id  0 | task 1597 | prompt eval time =    6999.12 ms /   620 tokens (   11.29 ms per token,    88.58 tokens per second)
+10.13.107.618 I slot print_timing: id  0 | task 1597 |        eval time =   38684.79 ms /   478 tokens (   81.10 ms per token,    12.33 tokens per second)
+10.13.107.619 I slot print_timing: id  0 | task 1597 |       total time =   45683.92 ms /  1098 tokens
+
+### ~/logs/fn_prod_1830.log
+0.00.264.329 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.19.289.799 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+1.24.201.014 I slot print_timing: id  0 | task 0 | prompt eval time =   12819.44 ms /   131 tokens (   97.86 ms per token,    10.22 tokens per second)
+1.24.201.018 I slot print_timing: id  0 | task 0 |        eval time =    6468.56 ms /    64 tokens (  102.68 ms per token,     9.74 tokens per second)
+1.24.201.021 I slot print_timing: id  0 | task 0 |       total time =   19288.00 ms /   195 tokens
+3.18.934.984 I slot print_timing: id  0 | task 2 | prompt eval time =  109280.74 ms /  9198 tokens (   11.88 ms per token,    84.17 tokens per second)
+3.18.934.988 I slot print_timing: id  0 | task 2 |        eval time =    5245.19 ms /    58 tokens (   92.02 ms per token,    10.87 tokens per second)
+3.18.934.989 I slot print_timing: id  0 | task 2 |       total time =  114525.93 ms /  9256 tokens
+3.19.620.815 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.937 (> 0.100 thold), f_keep = 1.000
+3.34.227.345 I slot print_timing: id  0 | task 131 | prompt eval time =    9494.42 ms /   618 tokens (   15.36 ms per token,    65.09 tokens per second)
+3.34.227.353 I slot print_timing: id  0 | task 131 |        eval time =    5110.69 ms /    60 tokens (   86.62 ms per token,    11.54 tokens per second)
+3.34.227.457 I slot print_timing: id  0 | task 131 |       total time =   14605.11 ms /   678 tokens
+3.34.774.110 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.973 (> 0.100 thold), f_keep = 1.000
+3.50.887.057 I slot print_timing: id  0 | task 193 | prompt eval time =    6448.08 ms /   278 tokens (   23.19 ms per token,    43.11 tokens per second)
+3.50.887.062 I slot print_timing: id  0 | task 193 |        eval time =    9659.22 ms /   117 tokens (   83.27 ms per token,    12.01 tokens per second)
+3.50.887.064 I slot print_timing: id  0 | task 193 |       total time =   16107.30 ms /   395 tokens
+3.51.047.083 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 1.000
+4.03.636.239 I slot print_timing: id  0 | task 312 | prompt eval time =    2134.32 ms /    37 tokens (   57.68 ms per token,    17.34 tokens per second)
+4.03.636.246 I slot print_timing: id  0 | task 312 |        eval time =   10453.25 ms /   131 tokens (   80.41 ms per token,    12.44 tokens per second)
+4.03.636.248 I slot print_timing: id  0 | task 312 |       total time =   12587.58 ms /   168 tokens
+4.04.147.167 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.944 (> 0.100 thold), f_keep = 1.000
+4.18.768.890 I slot print_timing: id  0 | task 445 | prompt eval time =    7696.80 ms /   626 tokens (   12.30 ms per token,    81.33 tokens per second)
+4.18.768.897 I slot print_timing: id  0 | task 445 |        eval time =    6923.37 ms /    87 tokens (   80.50 ms per token,    12.42 tokens per second)
+4.18.768.899 I slot print_timing: id  0 | task 445 |       total time =   14620.17 ms /   713 tokens
+4.19.116.659 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.940 (> 0.100 thold), f_keep = 1.000
+4.41.642.104 I slot print_timing: id  0 | task 534 | prompt eval time =    8630.53 ms /   711 tokens (   12.14 ms per token,    82.38 tokens per second)
+4.41.642.111 I slot print_timing: id  0 | task 534 |        eval time =   13894.23 ms /   174 tokens (   80.31 ms per token,    12.45 tokens per second)
+4.41.642.113 I slot print_timing: id  0 | task 534 |       total time =   22524.76 ms /   885 tokens
+4.49.370.005 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.908 (> 0.100 thold), f_keep = 1.000
+5.24.667.458 I slot print_timing: id  0 | task 710 | prompt eval time =    9437.97 ms /  1219 tokens (    7.74 ms per token,   129.16 tokens per second)
+5.24.667.464 I slot print_timing: id  0 | task 710 |        eval time =   25858.20 ms /   261 tokens (   99.45 ms per token,    10.05 tokens per second)
+5.24.667.466 I slot print_timing: id  0 | task 710 |       total time =   35296.17 ms /  1480 tokens
+5.24.667.484 I slot print_timing: id  0 | task 710 | draft acceptance = 0.29688 (   38 accepted /   128 generated), mean len = 20.00
+

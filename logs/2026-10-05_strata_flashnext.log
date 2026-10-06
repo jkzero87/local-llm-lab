@@ -1,0 +1,207 @@
+# Strata v0.1.39, Qwen3.8-Flash-Next: UD-IQ4_XS (65536 ctx) vs GSQ IQ3_S (32768 and 65536 ctx), 17.5k marker
+# Measurement lines only, copied from the files named in each ### header (home dir shown as ~).
+
+### ~/bench/strata/start.log
+[strata] loading the most-used experts into RAM (up to 36 GiB; the rest are read from the model files as needed) and locking part of them for the GPU.
+[strata] filling the GPU's expert cache (3581 experts, 8.06 GiB of VRAM) ...
+ready: http://127.0.0.1:8080/v1  (OpenAI: /v1/chat/completions, Anthropic: /v1/messages, context 65536 tokens)
+
+### ~/bench/strata/start3.log
+[strata] loading the most-used experts into RAM (up to 36 GiB; the rest are read from the model files as needed) and locking part of them for the GPU.
+[strata] filling the GPU's expert cache (3581 experts, 8.06 GiB of VRAM) ...
+ready: http://127.0.0.1:8080/v1  (OpenAI: /v1/chat/completions, Anthropic: /v1/messages, context 65536 tokens)
+[strata] done: 642 tokens in 95 s (19.1 tok/s) (stop, cancel=False), expert cache 63.3% hit (+4.0% of the routed experts over PCIe)
+
+### ~/bench/strata/start_iq3s2.log
+[strata] filling the GPU's expert cache (4537 experts, 8.65 GiB of VRAM) ...
+ready: http://127.0.0.1:8080/v1  (OpenAI: /v1/chat/completions, Anthropic: /v1/messages, context 32768 tokens, images on)
+[strata] done: 545 tokens in 38 s (41.3 tok/s) (stop, cancel=False), expert cache 70.6% hit (+3.7% of the routed experts over PCIe)
+
+### ~/bench/strata/start_iq3s_novision.log
+[strata] filling the GPU's expert cache (4537 experts, 8.65 GiB of VRAM) ...
+ready: http://127.0.0.1:8080/v1  (OpenAI: /v1/chat/completions, Anthropic: /v1/messages, context 32768 tokens)
+[strata] done: 545 tokens in 39 s (40.0 tok/s) (stop, cancel=False), expert cache 70.6% hit (+3.7% of the routed experts over PCIe)
+[strata] done: 64 tokens in 5 s (35.6 tok/s) (length, cancel=False), expert cache 62.5% hit (+4.7% of the routed experts over PCIe)
+[strata] done: 92 tokens in 18 s (31.4 tok/s) (stop, cancel=False), expert cache 57.5% hit (+5.1% of the routed experts over PCIe)
+[strata] done: 413 tokens in 15 s (39.0 tok/s) (stop, cancel=False), expert cache 72.4% hit (+3.3% of the routed experts over PCIe)
+[strata] done: 64 tokens in 5 s (30.8 tok/s) (length, cancel=False), expert cache 50.6% hit (+6.2% of the routed experts over PCIe)
+[strata] done: 233 tokens in 21 s (37.9 tok/s) (stop, cancel=False), expert cache 71.1% hit (+3.5% of the routed experts over PCIe)
+[strata] done: 460 tokens in 17 s (38.7 tok/s) (stop, cancel=False), expert cache 74.7% hit (+2.9% of the routed experts over PCIe)
+[strata] done: 64 tokens in 5 s (31.1 tok/s) (length, cancel=False), expert cache 49.0% hit (+6.4% of the routed experts over PCIe)
+[strata] done: 77 tokens in 17 s (33.5 tok/s) (stop, cancel=False), expert cache 60.7% hit (+4.8% of the routed experts over PCIe)
+[strata] done: 148 tokens in 7 s (41.9 tok/s) (stop, cancel=False), expert cache 72.5% hit (+3.4% of the routed experts over PCIe)
+[strata] done: 539 tokens in 18 s (37.9 tok/s) (stop, cancel=False), expert cache 76.3% hit (+2.7% of the routed experts over PCIe)
+[strata] done: 64 tokens in 6 s (29.5 tok/s) (length, cancel=False), expert cache 47.4% hit (+6.6% of the routed experts over PCIe)
+[strata] done: 32 tokens in 16 s (35.4 tok/s) (stop, cancel=False), expert cache 49.7% hit (+6.2% of the routed experts over PCIe)
+[strata] done: 653 tokens in 17 s (44.8 tok/s) (stop, cancel=False), expert cache 73.7% hit (+3.2% of the routed experts over PCIe)
+[strata] done: 806 tokens in 19 s (47.4 tok/s) (stop, cancel=False), expert cache 78.2% hit (+2.6% of the routed experts over PCIe)
+[strata] done: 335 tokens in 11 s (42.3 tok/s) (stop, cancel=False), expert cache 73.1% hit (+3.3% of the routed experts over PCIe)
+[strata] done: 64 tokens in 5 s (30.3 tok/s) (length, cancel=False), expert cache 51.6% hit (+6.2% of the routed experts over PCIe)
+[strata] done: 30 tokens in 15 s (44.7 tok/s) (stop, cancel=False), expert cache 63.2% hit (+4.6% of the routed experts over PCIe)
+[strata] done: 1 tokens in 2 s (58.5 tok/s) (length, cancel=False), expert cache 69.1% hit (+1.7% of the routed experts over PCIe)
+[strata] done: 849 tokens in 18 s (47.7 tok/s) (stop, cancel=False), expert cache 77.0% hit (+2.7% of the routed experts over PCIe)
+[strata] done: 64 tokens in 5 s (31.8 tok/s) (length, cancel=False), expert cache 43.5% hit (+6.9% of the routed experts over PCIe)
+[strata] done: 96 tokens in 18 s (30.4 tok/s) (stop, cancel=False), expert cache 56.7% hit (+5.3% of the routed experts over PCIe)
+[strata] done: 110 tokens in 8 s (29.9 tok/s) (stop, cancel=False), expert cache 67.2% hit (+4.1% of the routed experts over PCIe)
+[strata] done: 80 tokens in 5 s (39.0 tok/s) (stop, cancel=False), expert cache 75.8% hit (+2.9% of the routed experts over PCIe)
+[strata] done: 160 tokens in 8 s (36.1 tok/s) (stop, cancel=False), expert cache 67.8% hit (+3.8% of the routed experts over PCIe)
+[strata] done: 253 tokens in 12 s (38.9 tok/s) (stop, cancel=False), expert cache 71.0% hit (+3.4% of the routed experts over PCIe)
+[strata] done: 198 tokens in 5 s (43.0 tok/s) (stop, cancel=False), expert cache 74.0% hit (+3.0% of the routed experts over PCIe)
+[strata] done: 171 tokens in 5 s (40.6 tok/s) (stop, cancel=False), expert cache 67.4% hit (+4.1% of the routed experts over PCIe)
+[strata] done: 159 tokens in 6 s (40.7 tok/s) (stop, cancel=False), expert cache 67.1% hit (+4.1% of the routed experts over PCIe)
+[strata] done: 187 tokens in 12 s (40.7 tok/s) (stop, cancel=False), expert cache 67.6% hit (+4.0% of the routed experts over PCIe)
+[strata] done: 635 tokens in 21 s (37.0 tok/s) (stop, cancel=False), expert cache 71.6% hit (+3.3% of the routed experts over PCIe)
+
+### ~/bench/strata/shot1-142658.txt
+== shot1 | strata pid=10105
+               total        used        free      shared  buff/cache   available
+Mem:              61          44           2          38          53          17
+Swap:              7           2           5
+VmRSS:	32918876 kB
+VmSwap:	 1198124 kB
+15599 MiB, 16311 MiB
+wall: 95.884338849 s
+               total        used        free      shared  buff/cache   available
+Mem:              61          43           0          38          55          17
+Swap:              7           3           4
+VmSwap:	 1624596 kB
+usage: {'prompt_tokens': 17544, 'completion_tokens': 642, 'total_tokens': 18186, 'prompt_tokens_details': {'cached_tokens': 0}}
+timings: {'cache_n': 0, 'prompt_n': 17544, 'prompt_ms': 61170.0, 'prompt_per_token_ms': 3.487, 'prompt_per_second': 286.8, 'predicted_n': 642, 'predicted_ms': 33810.6, 'predicted_per_token_ms': 52.664, 'predicted_per_second': 19.0, 'draft_n': 521, 'draft_n_accepted': 409}
+reasoning chars: 2315
+ANSWER TAIL: 6
+
+### ~/bench/strata/shot2-144909.txt
+== shot2 | strata pid=20302
+               total        used        free      shared  buff/cache   available
+Mem:              61          43           1          38          54          17
+Swap:              7           2           5
+VmRSS:	44430852 kB
+VmSwap:	 1196256 kB
+15337 MiB, 16311 MiB
+wall: 86.723046371 s
+               total        used        free      shared  buff/cache   available
+Mem:              61          43           0          38          56          17
+Swap:              7           3           4
+VmSwap:	 1663384 kB
+usage: {'prompt_tokens': 17544, 'completion_tokens': 665, 'total_tokens': 18209, 'prompt_tokens_details': {'cached_tokens': 0}}
+timings: {'cache_n': 0, 'prompt_n': 17544, 'prompt_ms': 52356.4, 'prompt_per_token_ms': 2.984, 'prompt_per_second': 335.1, 'predicted_n': 665, 'predicted_ms': 33518.3, 'predicted_per_token_ms': 50.403, 'predicted_per_second': 19.8, 'draft_n': 537, 'draft_n_accepted': 436}
+reasoning chars: 2408
+ANSWER TAIL: 6
+
+### ~/bench/strata/shot3-153054.txt
+== shot3 | strata pid=32662
+               total        used        free      shared  buff/cache   available
+Mem:              61          46           0          38          53          14
+Swap:              0           0           0
+VmRSS:	56316460 kB
+VmSwap:	       0 kB
+15337 MiB, 16311 MiB
+wall: 81.205141911 s
+               total        used        free      shared  buff/cache   available
+Mem:              61          46           0          38          52          14
+Swap:              0           0           0
+VmSwap:	       0 kB
+usage: {'prompt_tokens': 17544, 'completion_tokens': 639, 'total_tokens': 18183, 'prompt_tokens_details': {'cached_tokens': 0}}
+timings: {'cache_n': 0, 'prompt_n': 17544, 'prompt_ms': 45785.7, 'prompt_per_token_ms': 2.61, 'prompt_per_second': 383.2, 'predicted_n': 639, 'predicted_ms': 35225.4, 'predicted_per_token_ms': 55.126, 'predicted_per_second': 18.1, 'draft_n': 523, 'draft_n_accepted': 420}
+reasoning chars: 2300
+ANSWER TAIL: 6
+
+### ~/bench/strata/iq3s_1-164032.txt
+== iq3s_1 | strata pid=64664
+               total        used        free      shared  buff/cache   available
+Mem:              61          50           9          42          43          10
+Swap:              0           0           0
+VmRSS:	  974988 kB
+VmSwap:	       0 kB
+15337 MiB, 16311 MiB
+wall: 38.438547616 s
+               total        used        free      shared  buff/cache   available
+Mem:              61          51           9          42          43           9
+Swap:              0           0           0
+VmSwap:	       0 kB
+usage: {'prompt_tokens': 17544, 'completion_tokens': 545, 'total_tokens': 18089, 'prompt_tokens_details': {'cached_tokens': 0}}
+timings: {'cache_n': 0, 'prompt_n': 17544, 'prompt_ms': 25076.1, 'prompt_per_token_ms': 1.429, 'prompt_per_second': 699.6, 'predicted_n': 545, 'predicted_ms': 13252.4, 'predicted_per_token_ms': 24.316, 'predicted_per_second': 41.1, 'draft_n': 450, 'draft_n_accepted': 346}
+reasoning chars: 2011
+ANSWER TAIL: 6
+
+### ~/bench/strata/iq3s_novision-164549.txt
+== iq3s_novision | strata pid=65807
+               total        used        free      shared  buff/cache   available
+Mem:              61          49          10          42          43          11
+Swap:              0           0           0
+VmRSS:	46038812 kB
+VmSwap:	       0 kB
+15337 MiB, 16311 MiB
+wall: 38.849774178 s
+               total        used        free      shared  buff/cache   available
+Mem:              61          50          10          42          43          10
+Swap:              0           0           0
+VmSwap:	       0 kB
+usage: {'prompt_tokens': 17544, 'completion_tokens': 545, 'total_tokens': 18089, 'prompt_tokens_details': {'cached_tokens': 0}}
+timings: {'cache_n': 0, 'prompt_n': 17544, 'prompt_ms': 25070.4, 'prompt_per_token_ms': 1.429, 'prompt_per_second': 699.8, 'predicted_n': 545, 'predicted_ms': 13688.5, 'predicted_per_token_ms': 25.117, 'predicted_per_second': 39.8, 'draft_n': 450, 'draft_n_accepted': 346}
+reasoning chars: 2011
+ANSWER TAIL: 6
+
+### ~/bench/strata/iq3s_65k-171740.txt
+== iq3s_65k | strata pid=75567
+               total        used        free      shared  buff/cache   available
+Mem:              61          52           6          43          45           8
+Swap:              0           0           0
+VmRSS:	47055568 kB
+VmSwap:	       0 kB
+15339 MiB, 16311 MiB
+wall: 34.395793398 s
+               total        used        free      shared  buff/cache   available
+Mem:              61          53           6          43          45           7
+Swap:              0           0           0
+VmSwap:	       0 kB
+usage: {'prompt_tokens': 17502, 'completion_tokens': 386, 'total_tokens': 17888, 'prompt_tokens_details': {'cached_tokens': 0}}
+timings: {'cache_n': 0, 'prompt_n': 17502, 'prompt_ms': 25448.8, 'prompt_per_token_ms': 1.454, 'prompt_per_second': 687.7, 'predicted_n': 386, 'predicted_ms': 8872.2, 'predicted_per_token_ms': 22.985, 'predicted_per_second': 43.5, 'draft_n': 333, 'draft_n_accepted': 269}
+reasoning chars: 1351
+ANSWER TAIL: 5
+
+### ~/bench/strata/iq3s_mem_antes.txt
+Mon Oct  5 04:21:52 PM -05 2026
+               total        used        free      shared  buff/cache   available
+Mem:              61           7           3           0          51          53
+Swap:              0           0           0
+13 MiB, 16311 MiB
+
+### ~/bench/strata/mvh/walls.txt and run_*.json (answer, predicted_n, prompt/s, gen/s); marker ground truth = 6 (count of "def result_score" in ~/bench/marcador_17500_v1.json)
+1 medium 34.938650679
+2 high 36.596328345
+3 medium 34.335084246
+4 high 37.565611820
+5 medium 33.543052558
+6 high 40.965570738
+7 medium 34.431966297
+8 high 41.332236801
+9 medium 34.470304013
+10 high 40.547782311
+run_1_medium.json: answer=5 predicted_n=386 prompt/s=689.6 gen/s=40.7
+run_2_high.json: answer=6 predicted_n=484 prompt/s=709.2 gen/s=41.1
+run_3_medium.json: answer=6 predicted_n=407 prompt/s=707.9 gen/s=42.7
+run_4_high.json: answer=5 predicted_n=474 prompt/s=709.3 gen/s=37.1
+run_5_medium.json: answer=5 predicted_n=386 prompt/s=707.6 gen/s=44.2
+run_6_high.json: answer=6 predicted_n=648 prompt/s=708.9 gen/s=40.1
+run_7_medium.json: answer=6 predicted_n=407 prompt/s=707.4 gen/s=42.3
+run_8_high.json: answer=6 predicted_n=632 prompt/s=708.9 gen/s=38.3
+run_9_medium.json: answer=6 predicted_n=407 prompt/s=707.3 gen/s=42.2
+run_10_high.json: answer=6 predicted_n=610 prompt/s=708.0 gen/s=38.9
+
+### journalctl --user, 2026-10-05 16:20-16:25
+Oct 05 16:22:40 <host> systemd[4295]: app-com.anthropic.Claude-8355.scope: systemd-oomd killed 17 process(es) in this unit.
+Oct 05 16:22:42 <host> systemd[4295]: app-com.anthropic.Claude-8355.scope: Failed with result 'oom-kill'.
+
+### ~/strata/setup_iq3s_lowram.log
+  [ok] GPU: NVIDIA GeForce RTX 5060 Ti, 15.9 GB VRAM, compute capability 12.0, driver 595.91.07
+  [ok] RAM: 61 GB
+  4) IQ3_S    3.5-bit i-quant, the best quality (matches the full model), the slowest; needs a 64 GB PC with little else running; download 84 GB, uses ~50 GB of RAM   <- needs 62 GB RAM, you have 61
+  [ok] size: IQ3_S
+  [ok] context: 32768 tokens
+  [ok] KV cache: 8-bit
+  [ok] low-RAM mode: the GPU holds ~20% of IQ3_S's experts (50 GB) and the other ~40 GB stay in RAM (61 GB), read once from a copy in the model folder
+  > ~/strata/.venv/bin/python ~/strata/tools/iq_pack.py --gguf ~/models/Qwen3.8-Flash-Next-GSQ/IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-00001-of-00002.gguf --out ~/Strata-data/packs/iq3_s --experts-bin
+experts.bin: 48 layers, 46.84 GiB
+  [ok] kept from your earlier strata-iq3_s.json: open_browser, env STRATA_PREFILL_MMQ
+

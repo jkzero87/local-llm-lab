@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Strata pierde velocidad si parte de su memoria cae al swap: apagarlo primero.
+if swapon --show | grep -q .; then echo "apagando swap..."; sudo swapoff -a || { echo "no se pudo apagar el swap" >&2; exit 1; }; fi
+# Start Strata (Flash-Next IQ3_S, :8080) and dsh web (:3080) as systemd --user units.
+# Each runs in its own unit/cgroup, so systemd-oomd or a closed terminal never takes the
+# others down. Refuses to start while the 27B llama-server holds the GPU (:8092).
+set -u
+port_pid() { ss -Htlnp "sport = :$1" | grep -oP 'pid=\K[0-9]+' | head -1; }
+active() { systemctl --user is-active --quiet "$1"; }
+
+if [[ -n $(port_pid 8092) ]]; then
+  echo "the 27B is running on :8092 (manifiestate); run chao first" >&2; exit 1
+fi
+swapon --show | grep -q . && echo "warning: swap is on (Strata is tuned for swap off)" >&2
+
+if active strata-iq3s; then
+  echo "strata already running"
+else
+  systemd-run --user --unit=strata-iq3s --collect --working-directory=~/strata \
+    /bin/sh -c 'exec ./run-iq3_s.sh > ~/logs/strata_iq3s_$(date +%Y%m%d_%H%M).log 2>&1'
+  echo "loading Strata (1-2 min)..."
+fi
+for ((i = 0; i < 300; i++)); do
+  curl -sf localhost:8080/health >/dev/null && break
+  active strata-iq3s || { echo "strata died, see: journalctl --user -u strata-iq3s" >&2; exit 1; }
+  sleep 2
+done
+curl -sf localhost:8080/health >/dev/null || { echo "strata not ready after 10 min" >&2; exit 1; }
+echo "strata ready: $(grep -a 'MiB of VRAM free' ~/strata/strata-iq3_s.log | tail -1)"
+
+if active dsh-web; then
+  echo "dsh already running"
+else
+  systemd-run --user --unit=dsh-web --collect --working-directory=~/strata \
+    /bin/sh -c 'exec ~/.npm-global/bin/dsh --profile web > ~/logs/dsh_web_$(date +%Y%m%d_%H%M).log 2>&1'
+fi
+for ((i = 0; i < 120; i++)); do [[ -n $(port_pid 3080) ]] && break; sleep 1; done
+[[ -n $(port_pid 3080) ]] && echo "dsh ready: http://localhost:3080" || { echo "dsh failed, see journalctl --user -u dsh-web" >&2; exit 1; }
+free -g | awk '/Mem/{print "RAM available: " $7 " GB"}'

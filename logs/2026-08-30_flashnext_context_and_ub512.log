@@ -1,0 +1,50 @@
+# Flash-Next UD-IQ4_XS, build 10679, --fit on: 65536 (-ub 4096), 98304 (-ub 512), 131072; 17.5k marker
+# Measurement lines only, copied from the files named in each ### header (home dir shown as ~).
+
+### ~/logs/flashnext_c65536_0858.log
+0.00.305.705 I cmn  common_param: common_params_print_info: build 10679 (50f068fff) with GNU 15.2.0 for Linux x86_64
+0.00.421.683 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.01.019.452 I common_params_fit_impl: projected to use 67018 MiB of device memory vs. 15585 MiB of free device memory
+0.02.702.960 I common_params_fit_impl:   - CUDA0 (NVIDIA GeForce RTX 5060 Ti): 49 layers,  11542 MiB used,   4043 MiB free
+0.22.794.102 I load_tensors:   CPU_Mapped model buffer size = 47015.89 MiB
+0.22.794.104 I load_tensors:   CPU_Mapped model buffer size = 41787.15 MiB
+0.22.794.106 I load_tensors:        CUDA0 model buffer size =  7151.29 MiB
+0.27.040.458 I llama_context: n_ubatch              = 4096
+0.27.043.072 I llama_kv_cache:      CUDA0 KV buffer size =   816.00 MiB
+0.27.046.334 I llama_kv_cache:      CUDA0 KV buffer size =   306.01 MiB
+0.27.632.059 I sched_reserve:      CUDA0 compute buffer size =  4528.56 MiB
+0.30.253.336 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 65536, kv_unified = 'false'
+4.29.330.768 I slot   operator(): id  0 | task 0 | new prompt, n_ctx_slot = 65536, n_keep = 0, task.n_tokens = 17501
+6.53.825.902 I slot print_timing: id  0 | task 0 | prompt eval time =  113892.24 ms / 17501 tokens (    6.51 ms per token,   153.66 tokens per second)
+6.53.825.908 I slot print_timing: id  0 | task 0 |        eval time =   30602.72 ms /   345 tokens (   88.96 ms per token,    11.24 tokens per second)
+6.53.825.911 I slot print_timing: id  0 | task 0 |       total time =  144494.97 ms / 17846 tokens
+
+### ~/logs/flashnext_c98304_ub512_0950.log
+0.00.160.576 I cmn  common_param: common_params_print_info: build 10679 (50f068fff) with GNU 15.2.0 for Linux x86_64
+0.00.264.695 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.00.829.516 I common_params_fit_impl: projected to use 63797 MiB of device memory vs. 15585 MiB of free device memory
+0.02.481.680 I common_params_fit_impl:   - CUDA0 (NVIDIA GeForce RTX 5060 Ti): 49 layers,   8567 MiB used,   7018 MiB free
+0.07.898.045 I load_tensors:   CPU_Mapped model buffer size = 47015.89 MiB
+0.07.898.047 I load_tensors:   CPU_Mapped model buffer size = 41787.15 MiB
+0.07.898.050 I load_tensors:        CUDA0 model buffer size =  9907.54 MiB
+0.09.581.562 I llama_context: n_ubatch              = 512
+0.09.584.007 I llama_kv_cache:      CUDA0 KV buffer size =  1224.00 MiB
+0.09.588.565 I llama_kv_cache:      CUDA0 KV buffer size =   459.01 MiB
+0.09.712.519 I sched_reserve:      CUDA0 compute buffer size =  1188.48 MiB
+0.10.416.201 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 98304, kv_unified = 'false'
+3.07.176.411 I slot   operator(): id  0 | task 0 | new prompt, n_ctx_slot = 98304, n_keep = 0, task.n_tokens = 17501
+8.13.833.381 I slot print_timing: id  0 | task 0 | prompt eval time =  265993.78 ms / 17501 tokens (   15.20 ms per token,    65.79 tokens per second)
+8.13.833.693 I slot print_timing: id  0 | task 0 |        eval time =   40663.18 ms /   466 tokens (   87.45 ms per token,    11.44 tokens per second)
+8.13.833.697 I slot print_timing: id  0 | task 0 |       total time =  306656.95 ms / 17967 tokens
+
+### ~/logs/flashnext_c131072_0832.log
+0.00.161.212 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.49.458.243 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 131072, kv_unified = 'false'
+6.27.540.172 I slot print_timing: id  0 | task 0 | prompt eval time =  130990.35 ms / 17501 tokens (    7.48 ms per token,   133.61 tokens per second)
+6.27.540.179 I slot print_timing: id  0 | task 0 |        eval time =   64304.57 ms /   362 tokens (  178.13 ms per token,     5.61 tokens per second)
+6.27.540.182 I slot print_timing: id  0 | task 0 |       total time =  195294.91 ms / 17863 tokens
+8.58.182.679 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.980
+10.35.791.745 I slot print_timing: id  0 | task 368 | prompt eval time =    1034.05 ms /     4 tokens (  258.51 ms per token,     3.87 tokens per second)
+10.35.791.752 I slot print_timing: id  0 | task 368 |        eval time =   96549.25 ms /   430 tokens (  225.06 ms per token,     4.44 tokens per second)
+10.35.791.755 I slot print_timing: id  0 | task 368 |       total time =   97583.30 ms /   434 tokens
+

@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+# Start imgproxy (:8091), GSQ 27B (MTP, 65k, CUDA graphs off, :8092) and dsh web
+# (:3080), then follow the model log.
+#
+# Each service runs fully detached: setsid (own session, no controlling
+# terminal) + nohup, stdin from /dev/null, output to its log. Closing this
+# terminal or pressing Ctrl+C in it cannot signal them; llama-server installs
+# its own SIGINT/SIGTERM handler, so without setsid a Ctrl+C in the old
+# `tail -f` reached it through the shared process group.
+#
+# PIDs are recorded in $RUN; `chao` stops the services by those PIDs.
+set -u
+RUN=~/.local/state/llmstack
+STAMP=$(date +%Y%m%d_%H%M)
+mkdir -p "$RUN" ~/logs
+
+# PID listening on a TCP port.
+port_pid() { ss -Htlnp "sport = :$1" | grep -oP 'pid=\K[0-9]+' | head -1; }
+listening() { [[ -n $(port_pid "$1") ]]; }
+model_ready() { curl -sf localhost:8092/health >/dev/null; }
+proxy_ready() { listening 8091; }
+dsh_ready() { listening 3080; }
+
+# settle PATTERN READY SECONDS
+# A process matching PATTERN may be starting up or still shutting down. Wait
+# until it is either ready (return 0: already running) or really gone
+# (return 1: start a new one). Give up if it is alive but never ready.
+settle() {
+  local pattern=$1 ready=$2 secs=$3 i
+  for ((i = 0; i < secs; i++)); do
+    "$ready" && return 0
+    pgrep -f -- "$pattern" >/dev/null || return 1
+    sleep 1
+  done
+  "$ready" && return 0
+  echo "'$pattern' is still alive but not ready after ${secs}s; run chao first" >&2
+  exit 1
+}
+
+# start NAME LOG CMD...: run CMD detached in a new session.
+start() {
+  local name=$1 log=$2
+  shift 2
+  setsid nohup "$@" > "$log" 2>&1 < /dev/null &
+}
+
+# record NAME PORT: store the PID that owns PORT.
+record() { port_pid "$2" > "$RUN/$1.pid"; }
+
+# wait_ready NAME READY SECONDS LOG
+wait_ready() {
+  local i
+  for ((i = 0; i < $3; i++)); do "$2" && return 0; sleep 1; done
+  echo "$1 failed to come up, see $4" >&2
+  exit 1
+}
+
+# Strata (Flash-Next, :8080) and the 27B cannot share the GPU: refuse while it is up.
+if [[ -n $(port_pid 8080) ]]; then
+  echo "Strata is running on :8080 (strata_up); run strata_down first" >&2
+  exit 1
+fi
+
+# imgproxy: webp -> PNG in front of llama-server. It may already be up under
+# the imgproxy.service user unit; then it is adopted, not duplicated.
+if settle 'bin/imgproxy.py' proxy_ready 30; then
+  echo "imgproxy already up on :8091"
+else
+  LOG=~/logs/imgproxy_$STAMP.log
+  start imgproxy "$LOG" ~/bin/imgproxy.py
+  wait_ready imgproxy proxy_ready 30 "$LOG"
+  echo "imgproxy started (log: $LOG)"
+fi
+record imgproxy 8091
+
+# Model. A stopping llama-server frees VRAM for a while after it closes its
+# port; settle() waits for it to be gone before loading a new one.
+if settle 'llama-server.*--port 8092' model_ready 240; then
+  echo "model already up on :8092"
+else
+  LOG=~/logs/27b_gsq_$STAMP.log
+  export GGML_CUDA_DISABLE_GRAPHS=1
+  start model "$LOG" ~/llama.cpp/build/bin/llama-server \
+    -m ~/models/Qwen3.8-27B-GSQ/Qwen3.8-27B-GSQ-RCO-IQ3_S-mtp.gguf \
+    --spec-type draft-mtp --spec-draft-n-max 3 \
+    -ngl 99 -fa on -c 65536 -ub 256 \
+    -ctk q8_0 -ctv q8_0 -ctkd q8_0 -ctvd q8_0 \
+    -t 6 --parallel 1 --reasoning-effort medium \
+    --port 8092
+  echo "loading model (log: $LOG)..."
+  wait_ready model model_ready 240 "$LOG"
+  echo "model ready"
+fi
+record model 8092
+
+# dsh web.
+if settle 'dsh --profile web' dsh_ready 120; then
+  echo "dsh already running on :3080"
+else
+  LOG=~/logs/dsh_web_$STAMP.log
+  start dsh "$LOG" dsh --profile web
+  echo "dsh starting on http://localhost:3080 (log: $LOG)..."
+  wait_ready dsh dsh_ready 180 "$LOG"
+  echo "dsh ready"
+fi
+record dsh 3080
+
+echo "pids: imgproxy $(<"$RUN/imgproxy.pid")  model $(<"$RUN/model.pid")  dsh $(<"$RUN/dsh.pid")"
+echo "following model log (Ctrl+C or closing this terminal stops watching, not the services)"
+tail -f "$(ls -t ~/logs/27b_gsq_*.log | head -1)"

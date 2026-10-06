@@ -1,0 +1,55 @@
+# Flash-Next UD-IQ4_XS, llama.cpp build 10679, 17.5k marker: -ub sweep and repeated-prompt cache hit
+# Measurement lines only, copied from the files named in each ### header (home dir shown as ~).
+
+### ~/logs/flashnext_1427.log
+0.00.154.029 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.27.688.667 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+1.48.642.057 I slot print_timing: id  0 | task 0 | prompt eval time =    9160.16 ms /    70 tokens (  130.86 ms per token,     7.64 tokens per second)
+1.48.642.064 I slot print_timing: id  0 | task 0 |        eval time =   33057.11 ms /   400 tokens (   82.85 ms per token,    12.07 tokens per second)
+1.48.642.066 I slot print_timing: id  0 | task 0 |       total time =   42217.27 ms /   470 tokens
+8.59.931.375 I slot print_timing: id  0 | task 403 | prompt eval time =  355483.06 ms / 17501 tokens (   20.31 ms per token,    49.23 tokens per second)
+8.59.931.379 I slot print_timing: id  0 | task 403 |        eval time =   29201.50 ms /   431 tokens (   67.91 ms per token,    14.73 tokens per second)
+8.59.931.381 I slot print_timing: id  0 | task 403 |       total time =  384684.55 ms / 17932 tokens
+14.06.746.043 W srv          stop: cancel task, id_task = 853
+
+### ~/logs/fn_ub2048_1744.log
+0.00.395.629 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.52.575.535 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+3.50.801.339 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t = 122.80 s / 142.82 tokens per second
+4.44.855.038 I slot print_timing: id  0 | task 0 | prompt eval time =  123509.92 ms / 17543 tokens (    7.04 ms per token,   142.04 tokens per second)
+4.44.855.043 I slot print_timing: id  0 | task 0 |        eval time =   53345.51 ms /   698 tokens (   76.54 ms per token,    13.07 tokens per second)
+4.44.855.045 I slot print_timing: id  0 | task 0 |       total time =  176855.42 ms / 18241 tokens
+
+### ~/logs/fn_ub4096_1750.log
+0.00.299.672 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.19.964.309 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+2.23.542.029 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t =  96.91 s / 180.99 tokens per second
+2.56.324.857 I slot print_timing: id  0 | task 0 | prompt eval time =   97733.60 ms / 17543 tokens (    5.57 ms per token,   179.50 tokens per second)
+2.56.324.862 I slot print_timing: id  0 | task 0 |        eval time =   31956.42 ms /   412 tokens (   77.75 ms per token,    12.86 tokens per second)
+2.56.324.864 I slot print_timing: id  0 | task 0 |       total time =  129690.03 ms / 17955 tokens
+
+### ~/logs/fn_ub8192_1754.log
+0.00.290.906 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.15.299.345 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+2.31.178.176 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t =  98.57 s / 177.93 tokens per second
+3.07.622.075 I slot print_timing: id  0 | task 0 | prompt eval time =   99225.73 ms / 17543 tokens (    5.66 ms per token,   176.80 tokens per second)
+3.07.622.081 I slot print_timing: id  0 | task 0 |        eval time =   35792.56 ms /   446 tokens (   80.43 ms per token,    12.43 tokens per second)
+3.07.622.083 I slot print_timing: id  0 | task 0 |       total time =  135018.29 ms / 17989 tokens
+
+### ~/logs/fn_kvq8_1802.log
+0.00.274.223 I srv    load_model: loading model '~/models/Qwen3.8-Flash-Next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf'
+0.19.577.797 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+3.07.314.603 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =  17539, progress = 1.00, t =  96.09 s / 182.53 tokens per second
+3.50.485.745 I slot print_timing: id  0 | task 0 | prompt eval time =   96677.30 ms / 17543 tokens (    5.51 ms per token,   181.46 tokens per second)
+3.50.485.752 I slot print_timing: id  0 | task 0 |        eval time =   42583.64 ms /   545 tokens (   78.28 ms per token,    12.77 tokens per second)
+3.50.485.755 I slot print_timing: id  0 | task 0 |       total time =  139260.95 ms / 18088 tokens
+7.47.615.204 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.970
+8.43.273.894 I slot print_timing: id  0 | task 552 | prompt eval time =    1671.20 ms /     4 tokens (  417.80 ms per token,     2.39 tokens per second)
+8.43.273.902 I slot print_timing: id  0 | task 552 |        eval time =   53984.68 ms /   631 tokens (   85.69 ms per token,    11.67 tokens per second)
+8.43.273.905 I slot print_timing: id  0 | task 552 |       total time =   55655.88 ms /   635 tokens
+
+### ~/bench/README.md (hardware lines)
+Causa: op-offload copia los expertos de RAM a GPU cada ubatch. PCIe 3.0 (5600G/A520).
+HARDWARE: PCIe 3.0 x8 (7.9 GB/s) - la x8 es de la placa A520+5600G, no ajustable. Gen 1 en idle es normal, sube a 3 bajo carga.
+RAM 3200 MT/s dual channel confirmado -> piso de generacion ~13 t/s, no movible.
+

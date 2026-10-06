@@ -1,0 +1,14 @@
+# Qwen3.8-27B GSQ RCO IQ3_S + MTP, llama.cpp build 10751, 17.5k marker per context size
+# Measurement lines only, copied from the files named in each ### header (home dir shown as ~).
+
+### ~/bench/gsq_results.md (columns C, survived, min/post-load VRAM free, prompt_n, prompt/s, predicted_n, predicted/s, draft_n, accepted)
+32768 | 1 | 2100 | 2286 | 17501 | 827.9015451402661 | 401 | 59.450116150664435 | 306 | 299 | answer: 6
+49152 | 1 | 1378 | 1564 | 17501 | 822.4245344074305 | 715 | 55.695114025215375 | 582 | 522 | answer: 6
+57344 | 1 | 1016 | 1202 | 17501 | 820.3638485466115 | 591 | 57.31966819489969 | 465 | 438 | answer: 6
+65536 | 1 | 656 | 842 | 17501 | 820.3588879119103 | 390 | 57.43939885017841 | 306 | 287 | answer: 6
+73728 | 1 | 294 | 480 | 17501 | 820.4378806497047 | 574 | 57.26833061317092 | 453 | 425 | answer: 6
+81920 | 0 | 112 | 120 | - | - | - | - | - | - | answer: RESP_ERR: ~/bench/resp_c81920.json not found
+
+### ~/logs/gsq_c81920.log
+0.01.044.456 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort
+0.04.149.594 E CUDA error: out of memory
