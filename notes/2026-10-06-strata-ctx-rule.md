@@ -29,3 +29,5 @@
   no config change is recommended.
 - The decision is a recommendation only; strata-iq3_s.json and the dsh config are changed by the repo owner, not
   by this test.
+
+- 2026-10-06 16:12: not run; replaced by the closing comparison below (notes/2026-10-06-strata-vs-27b-rule.md).
