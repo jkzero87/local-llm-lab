@@ -15,3 +15,5 @@ any of them (`apiKeyEnv` names an environment variable, not a key). See
 | `strata/strata-unsloth-ud-iq4_xs.HISTORICAL.json` | **Historical.** Strata config for Flash-Next UD-IQ4_XS (entry 11); that model has been deleted |
 | `dsh-profile-web/cordis.patch.yml` | dsh web profile patch: providers, models, default model and effort |
 | `settings.yaml`, `AGENTS.md`, `AGENTS.md.rules`, `agent-presets/` | Earlier dsh configuration (entry 4) |
+
+`plugins/dsh-preset-standard-light/cordis.patch.yml`: the summarizer (27B on `llamacpp-local`) was removed from `compaction-select` on 2026-10-05. While Strata holds the GPU the 27B cannot run, so compaction was calling a dead server.

@@ -73,8 +73,6 @@
               - id: compaction-select
                 name: dsh-compaction-select
                 config:
-                  summarizationProvider: llamacpp-local
-                  summarizationModel: /home/jkzero/models/Qwen3.8-27B-GSQ/Qwen3.8-27B-GSQ-RCO-IQ3_S-mtp.gguf
                   maxTokens: 8192
                   # Compact at contextWindow - 2048 - 6144 = 57,344 on 65K.
                   # 2048 = observed p99 output per request; 6144 covers max

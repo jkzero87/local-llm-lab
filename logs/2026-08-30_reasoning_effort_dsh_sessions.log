@@ -185,3 +185,5 @@ low: completion_tokens=653 prompt_ms=2842.7 predicted_ms=14618.1 predicted_per_s
 medium: completion_tokens=806 prompt_ms=2015.1 predicted_ms=17050.5 predicted_per_second=47.3
 high: completion_tokens=335 prompt_ms=2799.9 predicted_ms=7966.1 predicted_per_second=42.1
 
+### Effort check (2026-10-06): the three llama-server logs above start with "verbosity = 3"; none contains the argv,
+### "reasoning-effort", "chat_template_kwargs" or a rendered "Reasoning effort is set to" line. Effort per arm: not verified.

@@ -211,24 +211,29 @@ any log, so I cannot tie that crash to a specific draft length.
 
 I assumed lower effort means a faster session. The test was the same dsh
 prompt ("audit my dsh installation and write a report") on 2026-08-30, one
-clean session per server start:
+clean session per server start.
 
-| server log | dsh session | effort recorded in the request | turn time | output tokens | outcome |
+On llama.cpp, dsh's own effort field does not reach the model: the pi-ai adapter
+writes no `chat_template_kwargs`, so only the `llama-server` command line sets
+the effort (my Aug 30 finding; that check is not in these logs). A session's
+effort is therefore whatever its server was started with, and these three
+server logs were written at verbosity 3. They record neither the command line
+nor the rendered template ("Reasoning effort is set to ..."). **No arm's effort
+is verified.** The `low` in one log's file name is a name, not a measurement,
+and the `low` that dsh sent in `d3abf75a` never reached the model.
+
+| server log | dsh session | effort | turn time | output tokens | outcome |
 |---|---|---|---|---|---|
-| `flashnext_preserve_1001` | `960c2dbf` | not sent | 13.2 min | 5,108 | completed |
-| `flashnext_low_1043` | `fe040eb3` | not sent | aborted after 5.6 min | 0 | `stream idle timeout after 300000ms`; the server logged 3 cancelled tasks |
-| `flashnext_low_1043` | `e6911e39` (retry) | not sent | 28.9 min | 15,754 | completed |
-| `flashnext_c98304_0911` | `d3abf75a` | `low` | 19.3 min | 6,796 | completed |
+| `flashnext_preserve_1001` | `960c2dbf` | not verified | 13.2 min | 5,108 | completed |
+| `flashnext_low_1043` | `fe040eb3` | not verified | aborted after 5.6 min | 0 | `stream idle timeout after 300000ms`; the server logged 3 cancelled tasks |
+| `flashnext_low_1043` | `e6911e39` (retry) | not verified | 28.9 min | 15,754 | completed |
+| `flashnext_c98304_0911` | `d3abf75a` | not verified (dsh sent `low`, which is not applied) | 19.3 min | 6,796 | completed |
 
-On the `low` server, the aborted attempt plus the retry took 35.5 min of wall
-clock time. The effort used in the first two arms was set outside dsh and is
-recorded only in the server log names (`low`; the 10:01 log has no label).
-Taking those names at face value, low effort produced three times the output
-and more than twice the time of the 13-minute session. The one session where
-dsh sent `low` explicitly (19.3 min, 6,796 tokens) was also slower than the
-unlabeled 13-minute one. **Low effort did not make agentic work cheaper. It may
-have made it more expensive, but the logs do not label the arms well enough to
-call that measured.**
+What the logs do show: the same prompt on the same model and context took
+13.2 to 28.9 minutes per completed session, with 5,108 to 15,754 output tokens.
+That is a wide spread, and I cannot attribute it to effort. **Open: the
+low-vs-medium comparison has to be rerun with the server's effort flag
+recorded (`-lv 4`, or the argv saved next to the log) before it says anything.**
 
 Footnote: on one small logic puzzle (Strata IQ3_S, temperature 0;
 `logs/effort_proxy` data in the same log file) low used 653 completion tokens vs
